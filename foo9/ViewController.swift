@@ -26,8 +26,11 @@ class ViewController: UIViewController {
         self.groupColectionView.register(UINib(nibName: "GroupCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "GroupCollectionViewCell")
         self.groupColectionView.dataSource = self
         self.groupColectionView.delegate = self
-    
         
+//        let jsonData = try! JSONEncoder().encode(storage.groups[0].groups)
+//        let jsonString = String(data: jsonData, encoding: .utf8)
+//        print(jsonString)
+  
         // Do any additional setup after loading the view.
     }
 

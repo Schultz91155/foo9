@@ -26,6 +26,8 @@ class FullViewController: UIViewController {
         titleLabel.text = group.groups![doughSectionIndex].items![sizeSectionIndex].title
         dough.addTarget(self, action: #selector(doughChanged(sender: )), for: .valueChanged)
         size.addTarget(self, action: #selector(sizeChanged(sender: )), for: .valueChanged)
+        
+
     }
     
     @objc func doughChanged (sender : UISegmentedControl){
