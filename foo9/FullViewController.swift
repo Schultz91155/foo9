@@ -15,7 +15,7 @@ class FullViewController: UIViewController {
     @IBOutlet weak var titleLabel: UILabel!
     var doughSectionIndex = 0
     var sizeSectionIndex = 1
-    lazy var currentPizza = group.groups![doughSectionIndex].items![sizeSectionIndex] as! Pizza
+    lazy var currentPizza = group.groups![doughSectionIndex].items![sizeSectionIndex]
     
     var group = Group(type: .pizza, name: "block", image: "Block")
     
@@ -39,7 +39,7 @@ class FullViewController: UIViewController {
         updateLabel()
     }
     func updateLabel(){
-        currentPizza = group.groups![doughSectionIndex].items![sizeSectionIndex] as! Pizza
+        currentPizza = group.groups![doughSectionIndex].items![sizeSectionIndex]
         titleLabel.text = group.groups![doughSectionIndex].items![sizeSectionIndex].title
     }
 }
