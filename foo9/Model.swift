@@ -30,25 +30,25 @@ class Item : Codable{
     }
     
 }
-enum Types : Codable {
+enum Types : String, Codable {
     case pizza
     case burger
 //    case drink
 }
-enum PizzaSize: Codable{
+enum PizzaSize: String,  Codable{
     case small
     case medium
     case large
 }
-enum DoughThickness: Codable{
+enum DoughThickness: String, Codable{
     case traditional
     case slim
 }
 protocol PizzaProtocol : Codable{
-    
+
     var dough: DoughThickness {get set}
     var size: PizzaSize {get set}
-    
+
 }
 
 
@@ -59,14 +59,14 @@ enum BurgerSize :Codable {
     
 }
 
-protocol BurgerProtocol :Codable {
-    var size : BurgerSize {get}
-}
+//protocol BurgerProtocol :Codable {
+//    var size : BurgerSize {get}
+//}
 
 
 
 
-class Pizza : Item {
+class Pizza : Item, PizzaProtocol {
     
     var dough: DoughThickness
     var size: PizzaSize
@@ -84,7 +84,7 @@ class Pizza : Item {
     
 }
 
-class Burger : Item, BurgerProtocol{
+class Burger : Item{
     
     
     var size: BurgerSize
@@ -108,24 +108,24 @@ class Burger : Item, BurgerProtocol{
 
 class Storage : Codable {
     var groups = [Group]()
-    
+
     
     init(){
         setup()
     }
     func setup(){
-        let pts1 = Pizza(title: "pizza1 traditional small", image: "pizza", price: 100, dough: .traditional, size: .small )
+        let pts1 = Pizza(title: "pizza1 traditional small", image: "pizza", price: 100, dough: .traditional, size: .small)
         let ptm1 = Pizza(title: "pizza1 traditional medium", image: "pizza", price: 200, dough: .traditional, size: .medium)
         let ptl1 = Pizza(title: "pizza1 traditional large", image: "pizza", price: 200, dough: .traditional, size: .large)
         
-        let pgt1 = Group(type: .pizza, name: "pizza traditional", image : "pizza", groups: nil, items: [pts1,ptm1,ptl1])
-        
+    
         let pss1 = Pizza(title: "pizza1 slim small", image: "pizza", price: 200, dough: .slim, size: .small)
         let psm1 = Pizza(title: "pizza1 slim medium", image: "pizza", price: 200,  dough: .slim, size: .medium)
         let psl1 = Pizza(title: "pizza1 slim large", image: "pizza", price: 200, dough: .slim, size: .large)
         
-        let pgs1 = Group(type: .pizza, name: "pizza slim", image: "pizza", groups: nil, items: [pss1,psm1,psl1])
         
+        let pgt1 = Group(type: .pizza, name: "pizza traditional", image : "pizza", groups: nil, items: [pts1,ptm1,ptl1])
+        let pgs1 = Group(type: .pizza, name: "pizza slim", image: "pizza", groups: nil, items: [pss1,psm1,psl1])
         let p1 = Group(type: .pizza, name: "pizza1", image: "pizza", groups: [pgt1, pgs1], items: nil)
         
         let pts2 = Pizza(title: "pizza2 traditional small", image: "pizza", price: 200, dough: .traditional, size: .small)
@@ -183,6 +183,9 @@ class Storage : Codable {
         groups.append(burgers)
         
         
+
+        
+
         
         
         

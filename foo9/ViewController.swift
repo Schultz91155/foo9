@@ -27,9 +27,10 @@ class ViewController: UIViewController {
         self.groupColectionView.dataSource = self
         self.groupColectionView.delegate = self
         
-//        let jsonData = try! JSONEncoder().encode(storage.groups[0].groups)
-//        let jsonString = String(data: jsonData, encoding: .utf8)
-//        print(jsonString)
+        let jsonData = try! JSONEncoder().encode(storage.pizzasJSON)
+        let jsonString = String(data: jsonData, encoding: .utf8)
+        print(jsonString!)
+        
   
         // Do any additional setup after loading the view.
     }
@@ -98,6 +99,8 @@ extension ViewController : UICollectionViewDelegate, UICollectionViewDataSource,
             
             let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
             let currentGroup = storage.groups[selectedSection].groups![indexPath.row]
+            let pizza = currentGroup.items[0] as Pizza
+            pizza.
             switch (currentGroup.type){
             case .pizza :
                 let fullVC = storyboard.instantiateViewController(identifier: "fullVC") as! FullViewController
