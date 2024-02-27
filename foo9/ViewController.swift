@@ -41,9 +41,9 @@ extension ViewController : UICollectionViewDelegate, UICollectionViewDataSource,
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
         if (collectionView == self.collectionView){
-            return storage.groups[selectedSection].groups!.count
+            return storage.rootGroup.groups?[selectedSection].items?.count ?? 0
         } else{
-            return storage.groups.count
+            return storage.rootGroup.groups?.count ?? 0
         }
         
         
@@ -54,12 +54,12 @@ extension ViewController : UICollectionViewDelegate, UICollectionViewDataSource,
         if (collectionView == self.collectionView){
             
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CollectionViewCell", for: indexPath) as! CollectionViewCell
-            cell.setupCell(group: storage.groups[selectedSection].groups![indexPath.row])
+            cell.setupCell(item: storage.rootGroup.groups![selectedSection].items![indexPath.row])
             return cell
             
         } else{
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "GroupCollectionViewCell", for: indexPath) as! GroupCollectionViewCell
-            cell.setupCell(group: storage.groups[indexPath.row])
+            cell.setupCell(group: storage.rootGroup.groups![indexPath.row])
             return cell
         }
         
@@ -73,7 +73,7 @@ extension ViewController : UICollectionViewDelegate, UICollectionViewDataSource,
         if (collectionView == self.collectionView){
             return CGSize(width: self.view.frame.width - 10, height: 80)
         } else{
-            let groupName = storage.groups[indexPath.row].name
+            let groupName = storage.rootGroup.groups![indexPath.row].name
             let width = groupName.widthOfString(usingFont: UIFont.systemFont(ofSize: 20)) + 10
             return CGSize(width: width, height: groupColectionView.bounds.height)
 
@@ -98,7 +98,7 @@ extension ViewController : UICollectionViewDelegate, UICollectionViewDataSource,
         if (collectionView == self.collectionView){
             
             let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
-            let currentGroup = storage.groups[selectedSection].groups![indexPath.row]
+            let currentGroup = storage.rootGroup.groups![selectedSection].groups![indexPath.row]
 
             switch (currentGroup.type){
             case .pizza :

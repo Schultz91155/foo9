@@ -15,15 +15,15 @@ class FullViewController: UIViewController {
     @IBOutlet weak var titleLabel: UILabel!
     var doughSectionIndex = 0
     var sizeSectionIndex = 1
-    lazy var currentPizza = group.groups![doughSectionIndex].items![sizeSectionIndex] as! Pizza
+    var currentPizza : Pizza!
     
-    var group = Group(type: .pizza, name: "block", image: "Block")
+    var group : AbstractGroup!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.image.image = UIImage(named: group.image)!
         
-        titleLabel.text = group.groups![doughSectionIndex].items![sizeSectionIndex].title
+        titleLabel.text = group.items![sizeSectionIndex].title
         dough.addTarget(self, action: #selector(doughChanged(sender: )), for: .valueChanged)
         size.addTarget(self, action: #selector(sizeChanged(sender: )), for: .valueChanged)
         
@@ -39,7 +39,7 @@ class FullViewController: UIViewController {
         updateLabel()
     }
     func updateLabel(){
-        currentPizza = group.groups![doughSectionIndex].items![sizeSectionIndex] as! Pizza
-        titleLabel.text = group.groups![doughSectionIndex].items![sizeSectionIndex].title
+        currentPizza = group.items![sizeSectionIndex] as! Pizza
+        titleLabel.text = group.items![sizeSectionIndex].title
     }
 }
