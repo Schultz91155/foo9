@@ -14,10 +14,14 @@ struct Group : Codable {
     var image: String
     var groups: [Group]?
     var items:  [Item]?
+    var id: String
+    
 }
 
 
 class Item : Codable{
+    
+    var groupId: String
     
     var title : String
     var image : String
