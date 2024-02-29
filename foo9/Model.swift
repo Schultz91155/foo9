@@ -245,6 +245,7 @@ class Storage  {
         }
        
         self.rootGroup = AbstractGroup(type: rootGroup.type, name: rootGroup.name, image: rootGroup.image, groups: abstractGroups, items: nil, parentID: nil)
+
     }
     
 }
