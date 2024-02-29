@@ -14,8 +14,8 @@
             filePath = "foo9/Model.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "151"
-            endingLineNumber = "151"
+            startingLineNumber = "246"
+            endingLineNumber = "246"
             landmarkName = "setup()"
             landmarkType = "7">
             <Locations>
@@ -48,54 +48,6 @@
                   startingLineNumber = "152"
                   endingLineNumber = "152"
                   offsetFromSymbolStart = "2856">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "13718AE0-5E58-4216-A1DE-BDC53E330C53"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "foo9/Model.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "153"
-            endingLineNumber = "153"
-            landmarkName = "setup()"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "13718AE0-5E58-4216-A1DE-BDC53E330C53 - 139e307744a1e414"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Swift.String.widthOfString(usingFont: __C.UIFont) -&gt; CoreGraphics.CGFloat"
-                  moduleName = "foo9"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/pavelbrovkin/Documents/xcode/foo9/foo9/Model.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "143"
-                  endingLineNumber = "143"
-                  offsetFromSymbolStart = "612">
-               </Location>
-               <Location
-                  uuid = "13718AE0-5E58-4216-A1DE-BDC53E330C53 - 1e5f7353de4d8c78"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "foo9.Storage.setup() -&gt; ()"
-                  moduleName = "foo9"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/pavelbrovkin/Documents/xcode/foo9/foo9/Model.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "173"
-                  endingLineNumber = "173"
-                  offsetFromSymbolStart = "3164">
                </Location>
             </Locations>
          </BreakpointContent>

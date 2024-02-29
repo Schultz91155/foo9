@@ -76,9 +76,9 @@ enum BurgerSize :Codable {
     
 }
 
-//protocol BurgerProtocol :Codable {
-//    var size : BurgerSize {get}
-//}
+protocol BurgerProtocol :Codable {
+    var size : BurgerSize {get}
+}
 
 
 
@@ -101,6 +101,23 @@ class Pizza : Item, PizzaProtocol {
     
 }
 
+class Burger : Item, BurgerProtocol {
+    
+    
+    
+    var size: BurgerSize
+    
+    init(title : String, image: String, price: Int, size: BurgerSize, groupId: String) {
+        self.size = size
+        super.init(title: title, image: image, price: price, groupId: groupId)
+    }
+    
+    required init(from decoder: Decoder) throws {
+        fatalError("init(from:) has not been implemented")
+    }
+
+    
+}
 
 
 
@@ -117,59 +134,117 @@ class Storage  {
     }
     func setup(){
         
-        let pts1 = Pizza(title: "pizza1 slim small", image: "pizza", price: 200, dough: .traditional, size: .small, groupId: "traditional")
-        let ptm1 = Pizza(title: "pizza1 slim medium", image: "pizza", price: 200,  dough: .traditional, size: .medium, groupId: "traditional")
-        let ptl1 = Pizza(title: "pizza1 slim large", image: "pizza", price: 200, dough: .traditional, size: .large, groupId: "traditional")
+        let pts1 = Pizza(title: "Margarita slim small", image: "pizza", price: 200, dough: .traditional, size: .small, groupId: "Margarita_traditional")
+        let ptm1 = Pizza(title: "Margarita slim medium", image: "pizza", price: 200,  dough: .traditional, size: .medium, groupId: "Margarita_traditional")
+        let ptl1 = Pizza(title: "Margarita slim large", image: "pizza", price: 200, dough: .traditional, size: .large, groupId: "Margarita_traditional")
+        let pss1 = Pizza(title: "Margarita slim small", image: "pizza", price: 200, dough: .slim, size: .small, groupId: "Margarita_slim")
+        let psm1 = Pizza(title: "Margarita slim medium", image: "pizza", price: 200,  dough: .slim, size: .medium, groupId: "Margarita_slim")
+        let psl1 = Pizza(title: "Margarita slim large", image: "pizza", price: 200, dough: .slim, size: .large, groupId: "Margarita_slim")
         
-    
-        let pss1 = Pizza(title: "pizza1 slim small", image: "pizza", price: 200, dough: .slim, size: .small, groupId: "slim")
-        let psm1 = Pizza(title: "pizza1 slim medium", image: "pizza", price: 200,  dough: .slim, size: .medium, groupId: "slim")
-        let psl1 = Pizza(title: "pizza1 slim large", image: "pizza", price: 200, dough: .slim, size: .large, groupId: "slim")
+        let pts2 = Pizza(title: "MeatPizza slim small", image: "pizza", price: 200, dough: .traditional, size: .small, groupId: "MeatPizza_traditional")
+        let ptm2 = Pizza(title: "MeatPizza slim medium", image: "pizza", price: 200,  dough: .traditional, size: .medium, groupId: "MeatPizza_traditional")
+        let ptl2 = Pizza(title: "MeatPizza slim large", image: "pizza", price: 200, dough: .traditional, size: .large, groupId: "MeatPizza_traditional")
+        let pss2 = Pizza(title: "MeatPizza slim small", image: "pizza", price: 200, dough: .slim, size: .small, groupId: "MeatPizza_slim")
+        let psm2 = Pizza(title: "MeatPizza slim medium", image: "pizza", price: 200,  dough: .slim, size: .medium, groupId: "MeatPizza_slim")
+        let psl2 = Pizza(title: "MeatPizza slim large", image: "pizza", price: 200, dough: .slim, size: .large, groupId: "MeatPizza_slim")
         
-        let pgt1 = Group(type: .pizza, name: "pizza traditional", image : "pizza", id: "traditional", parentId: self.rootId )
-        let pgs1 = Group(type: .pizza, name: "pizza slim", image: "pizza", id: "small", parentId: self.rootId)
+        let pts3 = Pizza(title: "ChickenPizza slim small", image: "pizza", price: 200, dough: .traditional, size: .small, groupId: "ChickenPizza_traditional")
+        let ptm3 = Pizza(title: "ChickenPizza slim medium", image: "pizza", price: 200,  dough: .traditional, size: .medium, groupId: "ChickenPizza_traditional")
+        let ptl3 = Pizza(title: "ChickenPizza slim large", image: "pizza", price: 200, dough: .traditional, size: .large, groupId: "ChickenPizza_traditional")
+        let pss3 = Pizza(title: "ChickenPizza slim small", image: "pizza", price: 200, dough: .slim, size: .small, groupId: "ChickenPizza_slim")
+        let psm3 = Pizza(title: "ChickenPizza slim medium", image: "pizza", price: 200,  dough: .slim, size: .medium, groupId: "ChickenPizza_slim")
+        let psl3 = Pizza(title: "ChickenPizza slim large", image: "pizza", price: 200, dough: .slim, size: .large, groupId: "ChickenPizza_slim")
         
-        let rootGroup = Group(type: .pizza, name: "pizza", image: "pizza",  id: self.rootId , parentId: nil)
+        let mbM = Burger(title: "Meat burger M", image: "burger", price: 100, size: .M, groupId: "MeatBurger")
+        let mbL = Burger(title: "Meat burger L", image: "burger", price: 100, size: .L, groupId: "MeatBurger")
+        let mbXL = Burger(title: "Meat burger XL", image: "burger", price: 100, size: .XL, groupId: "MeatBurger")
         
-        let groups1 = [pgt1, pgs1]
-        let items = [pts1, ptm1, ptl1, pss1, psm1, psl1]
+        let chbM = Burger(title: "Chiken burger M", image: "burger", price: 100, size: .M, groupId: "ChickenBurger")
+        let chbL = Burger(title: "Chiken burger L", image: "burger", price: 100, size: .L, groupId: "ChickenBurger")
+        let chbXL = Burger(title: "Chiken burger XL", image: "burger", price: 100, size: .XL, groupId: "ChickenBurger")
         
-        var abstractGroups = [AbstractGroup]()
+        let fbM = Burger(title: "Fish burger M", image: "burger", price: 100, size: .M, groupId: "FishBurger")
+        let fbL = Burger(title: "Fish burger L", image: "burger", price: 100, size: .L, groupId: "FishBurger")
+        let fbXL = Burger(title: "Fish burger XL", image: "burger", price: 100, size: .XL, groupId: "FishBurger")
+        
+        
+        
+        
+        
+        
+//        let pgt1 = Group(type: .pizza, name: "pizza traditional", image : "pizza", id: "traditional", parentId: self.rootId )
+//        let pgs1 = Group(type: .pizza, name: "pizza slim", image: "pizza", id: "small", parentId: self.rootId)
+        
+        let rootGroup = Group(type: .pizza, name: "Storage", image: "pizza",  id: self.rootId , parentId: nil)
+        
+        let pizzas = Group(type: .pizza, name: "Pizzas", image: "pizza", id: "pizzas", parentId: self.rootId)
+        
+        
+        let margarita = Group(type: .pizza, name: "Margarita", image: "pizza", id: "Margarita", parentId: "pizzas")
+        let margaritaTraditional = Group(type: .pizza, name: "Margarita traditional", image: "pizza", id: "Margarita_traditional", parentId: "Margarita")
+        let margaritaSlim = Group(type: .pizza, name: "Margarita slim", image: "pizza", id: "Margarita_slim", parentId: "Margarita")
+        
+        
+        let meatPizza = Group(type: .pizza, name: "MeatPizza", image: "pizza", id: "MeatPizza", parentId: "pizzas")
+        let meatPizzaTraditional = Group(type: .pizza, name: "MeatPizza traditional", image: "pizza", id: "MeatPizza_traditional", parentId: "MeatPizza")
+        let meatPizzaSlim = Group(type: .pizza, name: "MeatPizza slim", image: "pizza", id: "MeatPizza_slim", parentId: "MeatPizza")
+        
+        let chickenPizza = Group(type: .pizza, name: "ChickenPizza", image: "pizza", id: "MeatPizza", parentId: "pizzas")
+        let chickenPizzaTraditional = Group(type: .pizza, name: "ChickenPizza traditional", image: "pizza", id: "ChickenPizza_traditional", parentId: "ChickenPizza")
+        let chickenPizzaSlim = Group(type: .pizza, name: "ChickenPizza slim", image: "pizza", id: "ChickenPizza_slim", parentId: "ChickenPizza")
         
 
+        let burgers = Group(type: .pizza, name: "Burgers", image: "burger", id: "burgers", parentId: self.rootId)
         
-        for group in groups1 {
-            var items1 =  [Item]()
-            for item in items {
+        
+        let meatBurger = Group(type: .burger, name: "MeatBurger", image: "burger", id: "MeatBurger", parentId: "burgers")
+        let chickenBurger = Group(type: .burger, name: "ChickenBurger", image: "burger", id: "ChickenBurger", parentId: "burgers")
+        let fishBurger = Group(type: .burger, name: "FishBurger", image: "burger", id: "FishBurger", parentId: "burgers")
+        
+        
+        
+        let groupsJSON = [pizzas,
+                                margarita,
+                                            margaritaTraditional,
+                                            margaritaSlim,
+                                meatPizza,
+                                            meatPizzaTraditional,
+                                            meatPizzaSlim,
+                                chickenPizza,
+                                            chickenPizzaTraditional,
+                                            chickenPizzaSlim,
+                            burgers,
+                                meatBurger,
+                                chickenBurger,
+                                fishBurger]
+        
+        let itemsJSON = [pts1, ptm1, ptl1, pss1, psm1, psl1,
+                         pts2, ptm2, ptl2, pss2, psm2, psl2,
+                         pts3, ptm3, ptl3, pss3, psm3, psl3,
+                         mbM, mbL,mbXL,
+                         chbM, chbL, chbXL,
+                         fbM, fbL, fbXL
+                         
+            ]
+        
+        var abstractGroups = [AbstractGroup]()
+        var createtedGrops = [Group]()
+        
+
+
+        
+        for group in groupsJSON {
+            var tempItems =  [Item]()
+            for item in itemsJSON {
                 if (item.groupId == group.id){
-                    items1.append(item)
+                    tempItems.append(item)
                 }
             }
             
-            abstractGroups.append(AbstractGroup(type: group.type, name: group.name, image: group.image, items: items1 ))
+            abstractGroups.append(AbstractGroup(type: group.type, name: group.name, image: group.image, items: tempItems ))
         }
        
         self.rootGroup = AbstractGroup(type: rootGroup.type, name: rootGroup.name, image: rootGroup.image, groups: abstractGroups, items: nil, parentID: nil)
-        
-//
-//        for item in items {
-//            for group in groups1{
-//                if (item.groupId == group.id){
-//                    abstractGroups.append(AbstractGroup(name: group.name, image: group.image, items: [item]))
-//                }
-//            }
-//        }
-
-       
-//        groups.append(pizzas)
-        
-        
-
-        
-
-        
-        
-        
     }
     
 }
