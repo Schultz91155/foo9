@@ -20,6 +20,7 @@
 		2DAAE4FF2B87E06F00D4EB6B /* GroupCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DAAE4FD2B87E06F00D4EB6B /* GroupCollectionViewCell.swift */; };
 		2DAAE5002B87E06F00D4EB6B /* GroupCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2DAAE4FE2B87E06F00D4EB6B /* GroupCollectionViewCell.xib */; };
 		2DAAE5022B87E79900D4EB6B /* Full2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DAAE5012B87E79900D4EB6B /* Full2ViewController.swift */; };
+		2DAAE5042B92958900D4EB6B /* file.json in Resources */ = {isa = PBXBuildFile; fileRef = 2DAAE5032B92958900D4EB6B /* file.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		2DAAE4FD2B87E06F00D4EB6B /* GroupCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupCollectionViewCell.swift; sourceTree = "<group>"; };
 		2DAAE4FE2B87E06F00D4EB6B /* GroupCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GroupCollectionViewCell.xib; sourceTree = "<group>"; };
 		2DAAE5012B87E79900D4EB6B /* Full2ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Full2ViewController.swift; sourceTree = "<group>"; };
+		2DAAE5032B92958900D4EB6B /* file.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = file.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +86,7 @@
 				2DAAE4F82B84CB1E00D4EB6B /* CollectionViewCell.xib */,
 				2DAAE4FD2B87E06F00D4EB6B /* GroupCollectionViewCell.swift */,
 				2DAAE4FE2B87E06F00D4EB6B /* GroupCollectionViewCell.xib */,
+				2DAAE5032B92958900D4EB6B /* file.json */,
 			);
 			path = foo9;
 			sourceTree = "<group>";
@@ -149,6 +152,7 @@
 				2DAAE4EE2B811E3000D4EB6B /* LaunchScreen.storyboard in Resources */,
 				2DAAE5002B87E06F00D4EB6B /* GroupCollectionViewCell.xib in Resources */,
 				2DAAE4EB2B811E3000D4EB6B /* Assets.xcassets in Resources */,
+				2DAAE5042B92958900D4EB6B /* file.json in Resources */,
 				2DAAE4FA2B84CB1E00D4EB6B /* CollectionViewCell.xib in Resources */,
 				2DAAE4E92B811E2C00D4EB6B /* Main.storyboard in Resources */,
 			);

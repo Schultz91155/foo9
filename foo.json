@@ -1,0 +1,77 @@
+{
+    "id": "root",
+    "groups":
+    [
+        {
+            "id": "pizzas",
+            "parentId": "root",
+            "groups":
+            [
+                {
+                    "id": "Margarita",
+                    "parentId": "pizzas",
+                    "groups":
+                    [
+                        {
+                            "id": "Margarita traditional",
+                            "parentId": "Margarita"
+                        },
+                        {
+                            "id": "Margarita slim",
+                            "parentId": "Margarita"
+                        }
+                    ]
+                },
+                {
+                    "id": "MeatPizza",
+                    "parentId": "pizzas",
+                    "groups":
+                    [
+                        {
+                            "id": "MeatPizza_traditional",
+                            "parentId": "MeatPizza"
+                        },
+                        {
+                            "id": "MeatPizza_slim",
+                            "parentId": "MeatPizza"
+                        }
+                    ]
+                },
+                {
+                    "id": "ChickenPizza",
+                    "parentId": "pizzas",
+                    "groups":
+                    [
+                        {
+                            "id": "ChickenPizza_traditional",
+                            "parentId": "ChickenPizza"
+                        },
+                        {
+                            "id": "ChickenPizza_slim",
+                            "parentId": "ChickenPizza"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "burgers",
+            "parentId": "root",
+            "groups":
+            [
+                {
+                    "id": "MeatBurger",
+                    "parentId": "burgers"
+                },
+                {
+                    "id": "ChickenBurger",
+                    "parentId": "burgers"
+                },
+                {
+                    "id": "FishBurger",
+                    "parentId": "burgers"
+                }
+            ]
+        }
+    ]
+}

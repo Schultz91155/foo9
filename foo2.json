@@ -1,0 +1,194 @@
+[
+    {
+        "title": "pizzas",
+        "groups":
+        [
+            {
+                "title": "Pizza 1",
+                "items":
+                [
+                    {
+                        "title": "Pizza 1 small",
+                        "price": 100
+                    },
+                    {
+                        "title": "Pizza 1 medium",
+                        "price": 200
+                    },
+                    {
+                        "title": "Pizza 1 large",
+                        "price": 300
+                    }
+                ]
+            },
+            {
+                "title": "Pizza 2",
+                "items":
+                [
+                    {
+                        "title": "Pizza 2 small",
+                        "price": 100
+                    },
+                    {
+                        "title": "Pizza 2 medium",
+                        "price": 200
+                    },
+                    {
+                        "title": "Pizza 2 large",
+                        "price": 300
+                    }
+                ]
+            },
+            {
+                "title": "Pizza 3",
+                "items":
+                [
+                    {
+                        "title": "Pizza 3 small",
+                        "price": 100
+                    },
+                    {
+                        "title": "Pizza 3 medium",
+                        "price": 200
+                    },
+                    {
+                        "title": "Pizza 3 large",
+                        "price": 300
+                    }
+                ]
+            },
+            {
+                "title": "Pizza 4",
+                "items":
+                [
+                    {
+                        "title": "Pizza 4 small",
+                        "price": 100
+                    },
+                    {
+                        "title": "Pizza 4 medium",
+                        "price": 200
+                    },
+                    {
+                        "title": "Pizza 4 large",
+                        "price": 300
+                    }
+                ]
+            },
+            {
+                "title": "Pizza 5",
+                "items":
+                [
+                    {
+                        "title": "Pizza 5 small",
+                        "price": 100
+                    },
+                    {
+                        "title": "Pizza 5 medium",
+                        "price": 200
+                    },
+                    {
+                        "title": "Pizza 5 large",
+                        "price": 300
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "title": "burgers",
+        "groups":
+        [
+            {
+                "title": "Burger 1",
+                "items":
+                [
+                    {
+                        "title": "Burger 1 small",
+                        "price": 100
+                    },
+                    {
+                        "title": "Burger 1 medium",
+                        "price": 200
+                    },
+                    {
+                        "title": "Burger 1 large",
+                        "price": 300
+                    }
+                ]
+            },
+            {
+                "title": "Burger 2",
+                "items":
+                [
+                    {
+                        "title": "Burger 2 small",
+                        "price": 100
+                    },
+                    {
+                        "title": "Burger 2 medium",
+                        "price": 200
+                    },
+                    {
+                        "title": "Burger 2 large",
+                        "price": 300
+                    }
+                ]
+            },
+            {
+                "title": "Burger 3",
+                "items":
+                [
+                    {
+                        "title": "Burger 3 small",
+                        "price": 100
+                    },
+                    {
+                        "title": "Burger 3 medium",
+                        "price": 200
+                    },
+                    {
+                        "title": "Burger 3 large",
+                        "price": 300
+                    }
+                ]
+            },
+            {
+                "title": "Burger 4",
+                "items":
+                [
+                    {
+                        "title": "Burger 4 small",
+                        "price": 100
+                    },
+                    {
+                        "title": "Burger 4 medium",
+                        "price": 200
+                    },
+                    {
+                        "title": "Burger 4 large",
+                        "price": 300
+                    }
+                ]
+            },
+            {
+                "title": "Burger 5",
+                "items":
+                [
+                    {
+                        "title": "Burger 5 small",
+                        "price": 100
+                    },
+                    {
+                        "title": "Burger 5 medium",
+                        "price": 200
+                    },
+                    {
+                        "title": "Burger 5 large",
+                        "price": 300
+                    }
+                ]
+            }
+        ]
+    }
+]

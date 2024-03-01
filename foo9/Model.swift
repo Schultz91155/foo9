@@ -17,7 +17,13 @@ struct Group : Codable {
     
 }
 
-struct AbstractGroup {
+
+
+
+
+
+
+struct AbstractGroup : Codable{
     var type: Types 
     var name : String
     var image: String
@@ -245,8 +251,95 @@ class Storage  {
         }
        
         self.rootGroup = AbstractGroup(type: rootGroup.type, name: rootGroup.name, image: rootGroup.image, groups: abstractGroups, items: nil, parentID: nil)
-
-    }
+        
+        
+        
+        struct JSONGroups : Codable {
+            
+            var title: String
+            var groups: [JSONTypeGroup]?
+            
+        }
+        
+        struct JSONTypeGroup: Codable{
+            var title: String
+            var items: [JSONItem]?
+        }
+        
+        struct JSONItem : Codable{
+            var title : String
+            var price : Int
+        }
+        
+        struct Answer : Codable{
+            var groups : [JSONGroups]
+        }
+        
+        
+        
+//        let gg1 = [JSONGroups(title: "pizzas",
+//                             groups:
+//                                    [
+//                                        JSONTypeGroup(title: "Pizza 1", items: [JSONItem(title: "Pizza 1 small", price: 100),JSONItem(title: "Pizza 1 medium", price: 200),JSONItem(title: "Pizza 1 large", price: 300)]),
+//                                        JSONTypeGroup(title: "Pizza 2", items: [JSONItem(title: "Pizza 2 small", price: 100),JSONItem(title: "Pizza 2 medium", price: 200),JSONItem(title: "Pizza 2 large", price: 300)]),
+//                                        JSONTypeGroup(title: "Pizza 3", items: [JSONItem(title: "Pizza 3 small", price: 100),JSONItem(title: "Pizza 3 medium", price: 200),JSONItem(title: "Pizza 3 large", price: 300)]),
+//                                        JSONTypeGroup(title: "Pizza 4", items: [JSONItem(title: "Pizza 4 small", price: 100),JSONItem(title: "Pizza 4 medium", price: 200),JSONItem(title: "Pizza 4 large", price: 300)]),
+//                                        JSONTypeGroup(title: "Pizza 5", items: [JSONItem(title: "Pizza 5 small", price: 100),JSONItem(title: "Pizza 5 medium", price: 200),JSONItem(title: "Pizza 5 large", price: 300)])
+//                                    ]),
+//                   JSONGroups(title: "burgers",
+//                                        groups:
+//                                               [
+//                                                   JSONTypeGroup(title: "Burger 1", items: [JSONItem(title: "Burger 1 small", price: 100),JSONItem(title: "Burger 1 medium", price: 200),JSONItem(title: "Burger 1 large", price: 300)]),
+//                                                   JSONTypeGroup(title: "Burger 2", items: [JSONItem(title: "Burger 2 small", price: 100),JSONItem(title: "Burger 2 medium", price: 200),JSONItem(title: "Burger 2 large", price: 300)]),
+//                                                   JSONTypeGroup(title: "Burger 3", items: [JSONItem(title: "Burger 3 small", price: 100),JSONItem(title: "Burger 3 medium", price: 200),JSONItem(title: "Burger 3 large", price: 300)]),
+//                                                   JSONTypeGroup(title: "Burger 4", items: [JSONItem(title: "Burger 4 small", price: 100),JSONItem(title: "Burger 4 medium", price: 200),JSONItem(title: "Burger 4 large", price: 300)]),
+//                                                   JSONTypeGroup(title: "Burger 5", items: [JSONItem(title: "Burger 5 small", price: 100),JSONItem(title: "Burger 5 medium", price: 200),JSONItem(title: "Burger 5 large", price: 300)])
+//                                               ])]
+//
+//
+//
+//
+//
+//
+//        let jsonData = try! JSONEncoder().encode(gg1)
+//        let jsonString = String(data: jsonData, encoding: .utf8)
+//        print(jsonString!)
+        func parse(pathForFile : String?) -> [JSONGroups]?{
+            var d: Data?
+            do{
+                d = try Data(contentsOf: URL(fileURLWithPath: pathForFile!))
+                
+            }
+            catch{
+                print("Error : \(String(describing: error))")
+                return nil
+            }
+            
+            guard let data = d else{
+                print( "Error...")
+                return nil
+            }
+            
+            do{
+                let answer = try JSONDecoder().decode([JSONGroups].self, from: data)
+                return answer
+            } catch{
+                print("Error : \(String(describing: error))")
+                return nil
+            }
+            
+        }
+        
+        
+        let parsedGroups = parse(pathForFile: Bundle.main.path(forResource: "file", ofType: "json"))
+        
+        
+    
+    
+    
+    
+    
+            }
     
 }
 
