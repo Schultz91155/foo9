@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CollectionViewCell3: UICollectionViewCell {
+class GroupCell: UICollectionViewCell {
 
     @IBOutlet weak var titleLable: UILabel!
     override func awakeFromNib() {

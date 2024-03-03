@@ -39,7 +39,7 @@ class FullViewController: UIViewController {
         updateLabel()
     }
     func updateLabel(){
-        currentPizza = group.items![sizeSectionIndex] as! Pizza
+        currentPizza = (group.items![sizeSectionIndex] as! Pizza)
         titleLabel.text = group.items![sizeSectionIndex].title
     }
 }

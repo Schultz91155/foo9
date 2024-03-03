@@ -14,8 +14,8 @@
             filePath = "foo9/Model.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "269"
-            endingLineNumber = "269"
+            startingLineNumber = "262"
+            endingLineNumber = "262"
             landmarkName = "setup()"
             landmarkType = "7">
             <Locations>
@@ -62,8 +62,8 @@
             filePath = "foo9/Model.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "317"
-            endingLineNumber = "317"
+            startingLineNumber = "293"
+            endingLineNumber = "293"
             landmarkName = "setup()"
             landmarkType = "7">
             <Locations>

@@ -112,7 +112,7 @@
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="qlV-JO-4jU">
                                 <rect key="frame" x="5" y="79" width="331" height="40"/>
-                                <color key="backgroundColor" systemColor="systemGreenColor"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="z8H-BF-iRY"/>
                                 </constraints>
@@ -132,21 +132,48 @@
                                     <action selector="createGroup:" destination="T6d-ET-EVx" eventType="touchUpInside" id="Rll-32-6cM"/>
                                 </connections>
                             </button>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="NLu-BV-O77">
+                                <rect key="frame" x="5" y="129" width="383" height="639"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="gci-GJ-iH8">
+                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells/>
+                            </collectionView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UCv-jz-zsw">
+                                <rect key="frame" x="5" y="778" width="383" height="35"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Add subgroup"/>
+                                <connections>
+                                    <action selector="createSubGroup:" destination="T6d-ET-EVx" eventType="touchUpInside" id="R5d-KN-E08"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="a6K-PN-sOO"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="UCv-jz-zsw" firstAttribute="top" secondItem="NLu-BV-O77" secondAttribute="bottom" constant="10" id="IeC-ES-GDb"/>
                             <constraint firstItem="UuA-GA-7xG" firstAttribute="height" secondItem="qlV-JO-4jU" secondAttribute="height" multiplier="0.875" id="Jf5-ui-rh9"/>
+                            <constraint firstItem="NLu-BV-O77" firstAttribute="top" secondItem="qlV-JO-4jU" secondAttribute="bottom" constant="10" id="MOo-Ff-XSY"/>
+                            <constraint firstItem="UCv-jz-zsw" firstAttribute="leading" secondItem="a6K-PN-sOO" secondAttribute="leading" constant="5" id="McC-AF-OK7"/>
+                            <constraint firstItem="NLu-BV-O77" firstAttribute="leading" secondItem="qlV-JO-4jU" secondAttribute="leading" id="Mxf-n9-Shf"/>
+                            <constraint firstItem="a6K-PN-sOO" firstAttribute="trailing" secondItem="UCv-jz-zsw" secondAttribute="trailing" constant="5" id="V0V-yn-id2"/>
                             <constraint firstItem="qlV-JO-4jU" firstAttribute="leading" secondItem="a6K-PN-sOO" secondAttribute="leading" constant="5" id="g8M-nz-OPP"/>
                             <constraint firstItem="UuA-GA-7xG" firstAttribute="leading" secondItem="qlV-JO-4jU" secondAttribute="trailing" constant="5" id="kcG-Qd-zUW"/>
+                            <constraint firstItem="a6K-PN-sOO" firstAttribute="bottom" secondItem="UCv-jz-zsw" secondAttribute="bottom" constant="5" id="lMw-VB-eAL"/>
                             <constraint firstItem="UuA-GA-7xG" firstAttribute="top" secondItem="qlV-JO-4jU" secondAttribute="top" id="nMb-Cw-VLL"/>
                             <constraint firstItem="qlV-JO-4jU" firstAttribute="top" secondItem="a6K-PN-sOO" secondAttribute="top" constant="20" id="uHW-Ke-Ifd"/>
+                            <constraint firstItem="NLu-BV-O77" firstAttribute="trailing" secondItem="UuA-GA-7xG" secondAttribute="trailing" id="xZ5-pO-2y8"/>
                             <constraint firstItem="a6K-PN-sOO" firstAttribute="trailing" secondItem="UuA-GA-7xG" secondAttribute="trailing" constant="5" id="yGB-p7-FbX"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="createGroupOutlet" destination="UuA-GA-7xG" id="mA0-HA-QkH"/>
-                        <outlet property="gropsCollectionView" destination="qlV-JO-4jU" id="gCa-LL-cC0"/>
+                        <outlet property="groupsCollectionView" destination="qlV-JO-4jU" id="gCa-LL-cC0"/>
+                        <outlet property="subGroupsCollectionView" destination="NLu-BV-O77" id="GWZ-Ae-JKv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jA3-TS-jKu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -246,9 +273,6 @@
         <image name="plus" catalog="system" width="128" height="113"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemGreenColor">
-            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemTealColor">
             <color red="0.18823529411764706" green="0.69019607843137254" blue="0.7803921568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
