@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="K39-ZS-ml4">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="T6d-ET-EVx">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -65,20 +65,93 @@
             </objects>
             <point key="canvasLocation" x="-550.38167938931292" y="92.957746478873247"/>
         </scene>
-        <!--View Controller-->
+        <!--View Controller2-->
         <scene sceneID="J1n-BA-tGc">
             <objects>
-                <viewController id="huC-x0-0gu" sceneMemberID="viewController">
+                <viewController id="huC-x0-0gu" customClass="ViewController2" customModule="foo9" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="gBA-lX-hML">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="IJ8-DZ-oQA">
+                                <rect key="frame" x="0.0" y="59" width="393" height="759"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="DtA-NM-gz3">
+                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells/>
+                            </collectionView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="1KS-mU-G9U"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="1KS-mU-G9U" firstAttribute="trailing" secondItem="IJ8-DZ-oQA" secondAttribute="trailing" id="Dw3-mn-Uqg"/>
+                            <constraint firstItem="IJ8-DZ-oQA" firstAttribute="top" secondItem="1KS-mU-G9U" secondAttribute="top" id="QI9-TF-gKC"/>
+                            <constraint firstItem="1KS-mU-G9U" firstAttribute="bottom" secondItem="IJ8-DZ-oQA" secondAttribute="bottom" id="dmt-fB-XIo"/>
+                            <constraint firstItem="IJ8-DZ-oQA" firstAttribute="leading" secondItem="1KS-mU-G9U" secondAttribute="leading" id="o79-XF-wuM"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="collectionView" destination="IJ8-DZ-oQA" id="WHw-wQ-PKt"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OSR-Lx-jSu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-537" y="793"/>
+        </scene>
+        <!--View Controller4-->
+        <scene sceneID="AV0-zN-jIV">
+            <objects>
+                <viewController storyboardIdentifier="vc4" id="T6d-ET-EVx" customClass="ViewController4" customModule="foo9" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="96J-br-qdd">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="qlV-JO-4jU">
+                                <rect key="frame" x="5" y="79" width="331" height="40"/>
+                                <color key="backgroundColor" systemColor="systemGreenColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="z8H-BF-iRY"/>
+                                </constraints>
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="F68-bN-UTc">
+                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells/>
+                            </collectionView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UuA-GA-7xG">
+                                <rect key="frame" x="341" y="79" width="47" height="35"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="plus" catalog="system"/>
+                                <connections>
+                                    <action selector="createGroup:" destination="T6d-ET-EVx" eventType="touchUpInside" id="Rll-32-6cM"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="a6K-PN-sOO"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="UuA-GA-7xG" firstAttribute="height" secondItem="qlV-JO-4jU" secondAttribute="height" multiplier="0.875" id="Jf5-ui-rh9"/>
+                            <constraint firstItem="qlV-JO-4jU" firstAttribute="leading" secondItem="a6K-PN-sOO" secondAttribute="leading" constant="5" id="g8M-nz-OPP"/>
+                            <constraint firstItem="UuA-GA-7xG" firstAttribute="leading" secondItem="qlV-JO-4jU" secondAttribute="trailing" constant="5" id="kcG-Qd-zUW"/>
+                            <constraint firstItem="UuA-GA-7xG" firstAttribute="top" secondItem="qlV-JO-4jU" secondAttribute="top" id="nMb-Cw-VLL"/>
+                            <constraint firstItem="qlV-JO-4jU" firstAttribute="top" secondItem="a6K-PN-sOO" secondAttribute="top" constant="20" id="uHW-Ke-Ifd"/>
+                            <constraint firstItem="a6K-PN-sOO" firstAttribute="trailing" secondItem="UuA-GA-7xG" secondAttribute="trailing" constant="5" id="yGB-p7-FbX"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="createGroupOutlet" destination="UuA-GA-7xG" id="mA0-HA-QkH"/>
+                        <outlet property="gropsCollectionView" destination="qlV-JO-4jU" id="gCa-LL-cC0"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jA3-TS-jKu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1049.6183206106871" y="792.95774647887333"/>
         </scene>
         <!--Full View Controller-->
         <scene sceneID="xhO-5D-PlJ">
@@ -170,8 +243,12 @@
         </scene>
     </scenes>
     <resources>
+        <image name="plus" catalog="system" width="128" height="113"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGreenColor">
+            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemTealColor">
             <color red="0.18823529411764706" green="0.69019607843137254" blue="0.7803921568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

@@ -125,6 +125,23 @@ class Burger : Item, BurgerProtocol {
     
 }
 
+struct JSONGroups : Codable {
+    
+    var title: String
+    var groups: [JSONGroups]?
+    var subGroups : [JSONSubGroup]?
+    
+}
+
+struct JSONSubGroup: Codable{
+    var title: String
+    var items: [JSONItem]?
+}
+
+struct JSONItem : Codable{
+    var title : String
+    var price : Int
+}
 
 
 
@@ -132,7 +149,7 @@ class Burger : Item, BurgerProtocol {
 class Storage  {
     //var groups = [AbstractGroup]()
     var rootGroup : AbstractGroup!
-    
+    var parsedGroups: [JSONGroups]!
     let rootId = "parentRootID"
     
     init(){
@@ -252,58 +269,26 @@ class Storage  {
        
         self.rootGroup = AbstractGroup(type: rootGroup.type, name: rootGroup.name, image: rootGroup.image, groups: abstractGroups, items: nil, parentID: nil)
         
-        
-        
-        struct JSONGroups : Codable {
-            
-            var title: String
-            var groups: [JSONTypeGroup]?
-            
-        }
-        
-        struct JSONTypeGroup: Codable{
-            var title: String
-            var items: [JSONItem]?
-        }
-        
-        struct JSONItem : Codable{
-            var title : String
-            var price : Int
-        }
-        
-        struct Answer : Codable{
-            var groups : [JSONGroups]
-        }
-        
-        
-        
-//        let gg1 = [JSONGroups(title: "pizzas",
-//                             groups:
-//                                    [
-//                                        JSONTypeGroup(title: "Pizza 1", items: [JSONItem(title: "Pizza 1 small", price: 100),JSONItem(title: "Pizza 1 medium", price: 200),JSONItem(title: "Pizza 1 large", price: 300)]),
-//                                        JSONTypeGroup(title: "Pizza 2", items: [JSONItem(title: "Pizza 2 small", price: 100),JSONItem(title: "Pizza 2 medium", price: 200),JSONItem(title: "Pizza 2 large", price: 300)]),
-//                                        JSONTypeGroup(title: "Pizza 3", items: [JSONItem(title: "Pizza 3 small", price: 100),JSONItem(title: "Pizza 3 medium", price: 200),JSONItem(title: "Pizza 3 large", price: 300)]),
-//                                        JSONTypeGroup(title: "Pizza 4", items: [JSONItem(title: "Pizza 4 small", price: 100),JSONItem(title: "Pizza 4 medium", price: 200),JSONItem(title: "Pizza 4 large", price: 300)]),
-//                                        JSONTypeGroup(title: "Pizza 5", items: [JSONItem(title: "Pizza 5 small", price: 100),JSONItem(title: "Pizza 5 medium", price: 200),JSONItem(title: "Pizza 5 large", price: 300)])
-//                                    ]),
-//                   JSONGroups(title: "burgers",
-//                                        groups:
-//                                               [
-//                                                   JSONTypeGroup(title: "Burger 1", items: [JSONItem(title: "Burger 1 small", price: 100),JSONItem(title: "Burger 1 medium", price: 200),JSONItem(title: "Burger 1 large", price: 300)]),
-//                                                   JSONTypeGroup(title: "Burger 2", items: [JSONItem(title: "Burger 2 small", price: 100),JSONItem(title: "Burger 2 medium", price: 200),JSONItem(title: "Burger 2 large", price: 300)]),
-//                                                   JSONTypeGroup(title: "Burger 3", items: [JSONItem(title: "Burger 3 small", price: 100),JSONItem(title: "Burger 3 medium", price: 200),JSONItem(title: "Burger 3 large", price: 300)]),
-//                                                   JSONTypeGroup(title: "Burger 4", items: [JSONItem(title: "Burger 4 small", price: 100),JSONItem(title: "Burger 4 medium", price: 200),JSONItem(title: "Burger 4 large", price: 300)]),
-//                                                   JSONTypeGroup(title: "Burger 5", items: [JSONItem(title: "Burger 5 small", price: 100),JSONItem(title: "Burger 5 medium", price: 200),JSONItem(title: "Burger 5 large", price: 300)])
-//                                               ])]
+
+
+//        let p1 = JSONGroups(title: "PS", groups: [JSONGroups(title: "P1", groups: nil, subGroups: [JSONSubGroup(title: "P1_traditional", items: [JSONItem(title: "P1_traditional_small", price: 100), JSONItem(title: "P1_traditional_medium", price: 100), JSONItem(title: "P1_traditional_large", price: 100)]),JSONSubGroup(title: "P1_slim", items: [JSONItem(title: "P1_slim_small", price: 100), JSONItem(title: "P1_slim_medium", price: 100), JSONItem(title: "P1_slim_large", price: 100)])]),JSONGroups(title: "P2", groups: nil, subGroups: [JSONSubGroup(title: "P2_traditional", items: [JSONItem(title: "P2_traditional_small", price: 100), JSONItem(title: "P1_traditional_medium", price: 100), JSONItem(title: "P1_traditional_large", price: 100)]),JSONSubGroup(title: "P2_slim", items: [JSONItem(title: "P2_slim_small", price: 100), JSONItem(title: "P1_slim_medium", price: 100), JSONItem(title: "P2_slim_large", price: 100)])]),JSONGroups(title: "P3", groups: nil, subGroups: [JSONSubGroup(title: "P3_traditional", items: [JSONItem(title: "P3_traditional_small", price: 100), JSONItem(title: "P1_traditional_medium", price: 100), JSONItem(title: "P1_traditional_large", price: 100)]),JSONSubGroup(title: "P3_slim", items: [JSONItem(title: "P3_slim_small", price: 100), JSONItem(title: "P3_slim_medium", price: 100), JSONItem(title: "P3_slim_large", price: 100)])])], subGroups: nil)
 //
 //
 //
-//
-//
-//
-//        let jsonData = try! JSONEncoder().encode(gg1)
-//        let jsonString = String(data: jsonData, encoding: .utf8)
-//        print(jsonString!)
+//        let bb1 = JSONGroups(title: "BS", groups: [JSONGroups(title: "B1", groups: nil, subGroups: [JSONSubGroup(title: "B1", items: [JSONItem(title: "B1 small", price: 200),JSONItem(title: "B1 medium", price: 100),JSONItem(title: "B1 large", price: 300)])]),JSONGroups(title: "B2", groups: nil, subGroups: [JSONSubGroup(title: "B2", items: [JSONItem(title: "B2 small", price: 200),JSONItem(title: "B2 medium", price: 100),JSONItem(title: "B2 large", price: 300)])]),JSONGroups(title: "B3", groups: nil, subGroups: [JSONSubGroup(title: "B3", items: [JSONItem(title: "B3 small", price: 200),JSONItem(title: "B3 medium", price: 100),JSONItem(title: "B3 large", price: 300)])])], subGroups: nil)
+
+        
+        var gg1 = [JSONGroups(title: "PS", groups: [JSONGroups(title: "P1", groups: nil, subGroups: [JSONSubGroup(title: "P1_traditional", items: [JSONItem(title: "P1_traditional_small", price: 100), JSONItem(title: "P1_traditional_medium", price: 100), JSONItem(title: "P1_traditional_large", price: 100)]),JSONSubGroup(title: "P1_slim", items: [JSONItem(title: "P1_slim_small", price: 100), JSONItem(title: "P1_slim_medium", price: 100), JSONItem(title: "P1_slim_large", price: 100)])]),JSONGroups(title: "P2", groups: nil, subGroups: [JSONSubGroup(title: "P2_traditional", items: [JSONItem(title: "P2_traditional_small", price: 100), JSONItem(title: "P1_traditional_medium", price: 100), JSONItem(title: "P1_traditional_large", price: 100)]),JSONSubGroup(title: "P2_slim", items: [JSONItem(title: "P2_slim_small", price: 100), JSONItem(title: "P1_slim_medium", price: 100), JSONItem(title: "P2_slim_large", price: 100)])]),JSONGroups(title: "P3", groups: nil, subGroups: [JSONSubGroup(title: "P3_traditional", items: [JSONItem(title: "P3_traditional_small", price: 100), JSONItem(title: "P1_traditional_medium", price: 100), JSONItem(title: "P1_traditional_large", price: 100)]),JSONSubGroup(title: "P3_slim", items: [JSONItem(title: "P3_slim_small", price: 100), JSONItem(title: "P3_slim_medium", price: 100), JSONItem(title: "P3_slim_large", price: 100)])])], subGroups: nil),JSONGroups(title: "BS", groups: [JSONGroups(title: "B1", groups: nil, subGroups: [JSONSubGroup(title: "B1", items: [JSONItem(title: "B1 small", price: 200),JSONItem(title: "B1 medium", price: 100),JSONItem(title: "B1 large", price: 300)])]),JSONGroups(title: "B2", groups: nil, subGroups: [JSONSubGroup(title: "B2", items: [JSONItem(title: "B2 small", price: 200),JSONItem(title: "B2 medium", price: 100),JSONItem(title: "B2 large", price: 300)])]),JSONGroups(title: "B3", groups: nil, subGroups: [JSONSubGroup(title: "B3", items: [JSONItem(title: "B3 small", price: 200),JSONItem(title: "B3 medium", price: 100),JSONItem(title: "B3 large", price: 300)])])], subGroups: nil)]
+
+
+
+
+
+
+        let jsonData = try! JSONEncoder().encode(gg1)
+        let jsonString = String(data: jsonData, encoding: .utf8)
+        print(jsonString!)
+        
         func parse(pathForFile : String?) -> [JSONGroups]?{
             var d: Data?
             do{
@@ -329,17 +314,9 @@ class Storage  {
             }
             
         }
-        
-        
-        let parsedGroups = parse(pathForFile: Bundle.main.path(forResource: "file", ofType: "json"))
-        
-        
-    
-    
-    
-    
-    
+        parsedGroups = parse(pathForFile: Bundle.main.path(forResource: "file", ofType: "json"))
             }
+    
     
 }
 

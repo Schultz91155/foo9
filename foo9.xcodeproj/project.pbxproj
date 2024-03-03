@@ -21,6 +21,12 @@
 		2DAAE5002B87E06F00D4EB6B /* GroupCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2DAAE4FE2B87E06F00D4EB6B /* GroupCollectionViewCell.xib */; };
 		2DAAE5022B87E79900D4EB6B /* Full2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DAAE5012B87E79900D4EB6B /* Full2ViewController.swift */; };
 		2DAAE5042B92958900D4EB6B /* file.json in Resources */ = {isa = PBXBuildFile; fileRef = 2DAAE5032B92958900D4EB6B /* file.json */; };
+		2DAAE5062B929E0F00D4EB6B /* ViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DAAE5052B929E0F00D4EB6B /* ViewController2.swift */; };
+		2DAAE5092B92A06B00D4EB6B /* CollectionViewCell2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DAAE5072B92A06B00D4EB6B /* CollectionViewCell2.swift */; };
+		2DAAE50A2B92A06B00D4EB6B /* CollectionViewCell2.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2DAAE5082B92A06B00D4EB6B /* CollectionViewCell2.xib */; };
+		2DAAE50E2B93479600D4EB6B /* ViewController4.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DAAE50D2B93479600D4EB6B /* ViewController4.swift */; };
+		2DAAE5112B9348CE00D4EB6B /* CollectionViewCell3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DAAE50F2B9348CE00D4EB6B /* CollectionViewCell3.swift */; };
+		2DAAE5122B9348CE00D4EB6B /* CollectionViewCell3.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2DAAE5102B9348CE00D4EB6B /* CollectionViewCell3.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +46,12 @@
 		2DAAE4FE2B87E06F00D4EB6B /* GroupCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GroupCollectionViewCell.xib; sourceTree = "<group>"; };
 		2DAAE5012B87E79900D4EB6B /* Full2ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Full2ViewController.swift; sourceTree = "<group>"; };
 		2DAAE5032B92958900D4EB6B /* file.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = file.json; sourceTree = "<group>"; };
+		2DAAE5052B929E0F00D4EB6B /* ViewController2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController2.swift; sourceTree = "<group>"; };
+		2DAAE5072B92A06B00D4EB6B /* CollectionViewCell2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell2.swift; sourceTree = "<group>"; };
+		2DAAE5082B92A06B00D4EB6B /* CollectionViewCell2.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CollectionViewCell2.xib; sourceTree = "<group>"; };
+		2DAAE50D2B93479600D4EB6B /* ViewController4.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController4.swift; sourceTree = "<group>"; };
+		2DAAE50F2B9348CE00D4EB6B /* CollectionViewCell3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell3.swift; sourceTree = "<group>"; };
+		2DAAE5102B9348CE00D4EB6B /* CollectionViewCell3.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CollectionViewCell3.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +99,12 @@
 				2DAAE4FD2B87E06F00D4EB6B /* GroupCollectionViewCell.swift */,
 				2DAAE4FE2B87E06F00D4EB6B /* GroupCollectionViewCell.xib */,
 				2DAAE5032B92958900D4EB6B /* file.json */,
+				2DAAE5052B929E0F00D4EB6B /* ViewController2.swift */,
+				2DAAE5072B92A06B00D4EB6B /* CollectionViewCell2.swift */,
+				2DAAE5082B92A06B00D4EB6B /* CollectionViewCell2.xib */,
+				2DAAE50D2B93479600D4EB6B /* ViewController4.swift */,
+				2DAAE50F2B9348CE00D4EB6B /* CollectionViewCell3.swift */,
+				2DAAE5102B9348CE00D4EB6B /* CollectionViewCell3.xib */,
 			);
 			path = foo9;
 			sourceTree = "<group>";
@@ -151,8 +169,10 @@
 			files = (
 				2DAAE4EE2B811E3000D4EB6B /* LaunchScreen.storyboard in Resources */,
 				2DAAE5002B87E06F00D4EB6B /* GroupCollectionViewCell.xib in Resources */,
+				2DAAE5122B9348CE00D4EB6B /* CollectionViewCell3.xib in Resources */,
 				2DAAE4EB2B811E3000D4EB6B /* Assets.xcassets in Resources */,
 				2DAAE5042B92958900D4EB6B /* file.json in Resources */,
+				2DAAE50A2B92A06B00D4EB6B /* CollectionViewCell2.xib in Resources */,
 				2DAAE4FA2B84CB1E00D4EB6B /* CollectionViewCell.xib in Resources */,
 				2DAAE4E92B811E2C00D4EB6B /* Main.storyboard in Resources */,
 			);
@@ -167,10 +187,14 @@
 			files = (
 				2DAAE5022B87E79900D4EB6B /* Full2ViewController.swift in Sources */,
 				2DAAE4F92B84CB1E00D4EB6B /* CollectionViewCell.swift in Sources */,
+				2DAAE5112B9348CE00D4EB6B /* CollectionViewCell3.swift in Sources */,
+				2DAAE5062B929E0F00D4EB6B /* ViewController2.swift in Sources */,
 				2DAAE4FF2B87E06F00D4EB6B /* GroupCollectionViewCell.swift in Sources */,
 				2DAAE4E62B811E2C00D4EB6B /* ViewController.swift in Sources */,
 				2DAAE4E22B811E2C00D4EB6B /* AppDelegate.swift in Sources */,
+				2DAAE50E2B93479600D4EB6B /* ViewController4.swift in Sources */,
 				2DAAE4FC2B84D1BE00D4EB6B /* FullViewController.swift in Sources */,
+				2DAAE5092B92A06B00D4EB6B /* CollectionViewCell2.swift in Sources */,
 				2DAAE4E42B811E2C00D4EB6B /* SceneDelegate.swift in Sources */,
 				2DAAE4F62B811EB300D4EB6B /* Model.swift in Sources */,
 			);

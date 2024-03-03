@@ -14,8 +14,8 @@
             filePath = "foo9/Model.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "252"
-            endingLineNumber = "252"
+            startingLineNumber = "269"
+            endingLineNumber = "269"
             landmarkName = "setup()"
             landmarkType = "7">
             <Locations>
@@ -50,6 +50,85 @@
                   offsetFromSymbolStart = "2856">
                </Location>
             </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "EA2B7FCC-FFA5-43DC-861B-40E76A777582"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "foo9/Model.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "317"
+            endingLineNumber = "317"
+            landmarkName = "setup()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "EA2B7FCC-FFA5-43DC-861B-40E76A777582 - 1e5f7353de4db1a7"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "foo9.Storage.setup() -&gt; ()"
+                  moduleName = "foo9"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/pavelbrovkin/Documents/xcode/foo9/foo9/Model.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "334"
+                  endingLineNumber = "334"
+                  offsetFromSymbolStart = "9520">
+               </Location>
+               <Location
+                  uuid = "EA2B7FCC-FFA5-43DC-861B-40E76A777582 - 1e5f7353de4db1a7"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "foo9.Storage.setup() -&gt; ()"
+                  moduleName = "foo9"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/pavelbrovkin/Documents/xcode/foo9/foo9/Model.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "334"
+                  endingLineNumber = "334"
+                  offsetFromSymbolStart = "9768">
+               </Location>
+               <Location
+                  uuid = "EA2B7FCC-FFA5-43DC-861B-40E76A777582 - 1e5f7353de4db198"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "foo9.Storage.setup() -&gt; ()"
+                  moduleName = "foo9"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/pavelbrovkin/Documents/xcode/foo9/foo9/Model.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "333"
+                  endingLineNumber = "333"
+                  offsetFromSymbolStart = "9500">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "94EFA470-48B9-4621-A21C-BD3372CCE880"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "foo9/ViewController3.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "25"
+            endingLineNumber = "25"
+            landmarkName = "createGroup(_:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

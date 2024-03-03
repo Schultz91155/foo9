@@ -1,191 +1,209 @@
 [
     {
-        "title": "pizzas",
+        "title": "PS",
         "groups":
         [
             {
-                "title": "Pizza 1",
-                "items":
+                "title": "P1",
+                "subGroups":
                 [
                     {
-                        "title": "Pizza 1 small",
-                        "price": 100
+                        "title": "P1_traditional",
+                        "items":
+                        [
+                            {
+                                "title": "P1_traditional_small",
+                                "price": 100
+                            },
+                            {
+                                "title": "P1_traditional_medium",
+                                "price": 100
+                            },
+                            {
+                                "title": "P1_traditional_large",
+                                "price": 100
+                            }
+                        ]
                     },
                     {
-                        "title": "Pizza 1 medium",
-                        "price": 200
-                    },
-                    {
-                        "title": "Pizza 1 large",
-                        "price": 300
+                        "title": "P1_slim",
+                        "items":
+                        [
+                            {
+                                "title": "P1_slim_small",
+                                "price": 100
+                            },
+                            {
+                                "title": "P1_slim_medium",
+                                "price": 100
+                            },
+                            {
+                                "title": "P1_slim_large",
+                                "price": 100
+                            }
+                        ]
                     }
                 ]
             },
             {
-                "title": "Pizza 2",
-                "items":
+                "title": "P2",
+                "subGroups":
                 [
                     {
-                        "title": "Pizza 2 small",
-                        "price": 100
+                        "title": "P2_traditional",
+                        "items":
+                        [
+                            {
+                                "title": "P2_traditional_small",
+                                "price": 100
+                            },
+                            {
+                                "title": "P1_traditional_medium",
+                                "price": 100
+                            },
+                            {
+                                "title": "P1_traditional_large",
+                                "price": 100
+                            }
+                        ]
                     },
                     {
-                        "title": "Pizza 2 medium",
-                        "price": 200
-                    },
-                    {
-                        "title": "Pizza 2 large",
-                        "price": 300
+                        "title": "P2_slim",
+                        "items":
+                        [
+                            {
+                                "title": "P2_slim_small",
+                                "price": 100
+                            },
+                            {
+                                "title": "P1_slim_medium",
+                                "price": 100
+                            },
+                            {
+                                "title": "P2_slim_large",
+                                "price": 100
+                            }
+                        ]
                     }
                 ]
             },
             {
-                "title": "Pizza 3",
-                "items":
+                "title": "P3",
+                "subGroups":
                 [
                     {
-                        "title": "Pizza 3 small",
-                        "price": 100
+                        "title": "P3_traditional",
+                        "items":
+                        [
+                            {
+                                "title": "P3_traditional_small",
+                                "price": 100
+                            },
+                            {
+                                "title": "P1_traditional_medium",
+                                "price": 100
+                            },
+                            {
+                                "title": "P1_traditional_large",
+                                "price": 100
+                            }
+                        ]
                     },
                     {
-                        "title": "Pizza 3 medium",
-                        "price": 200
-                    },
-                    {
-                        "title": "Pizza 3 large",
-                        "price": 300
-                    }
-                ]
-            },
-            {
-                "title": "Pizza 4",
-                "items":
-                [
-                    {
-                        "title": "Pizza 4 small",
-                        "price": 100
-                    },
-                    {
-                        "title": "Pizza 4 medium",
-                        "price": 200
-                    },
-                    {
-                        "title": "Pizza 4 large",
-                        "price": 300
-                    }
-                ]
-            },
-            {
-                "title": "Pizza 5",
-                "items":
-                [
-                    {
-                        "title": "Pizza 5 small",
-                        "price": 100
-                    },
-                    {
-                        "title": "Pizza 5 medium",
-                        "price": 200
-                    },
-                    {
-                        "title": "Pizza 5 large",
-                        "price": 300
+                        "title": "P3_slim",
+                        "items":
+                        [
+                            {
+                                "title": "P3_slim_small",
+                                "price": 100
+                            },
+                            {
+                                "title": "P3_slim_medium",
+                                "price": 100
+                            },
+                            {
+                                "title": "P3_slim_large",
+                                "price": 100
+                            }
+                        ]
                     }
                 ]
             }
         ]
     },
     {
-        "title": "burgers",
+        "title": "BS",
         "groups":
         [
             {
-                "title": "Burger 1",
-                "items":
+                "title": "B1",
+                "subGroups":
                 [
                     {
-                        "title": "Burger 1 small",
-                        "price": 100
-                    },
-                    {
-                        "title": "Burger 1 medium",
-                        "price": 200
-                    },
-                    {
-                        "title": "Burger 1 large",
-                        "price": 300
+                        "title": "B1",
+                        "items":
+                        [
+                            {
+                                "title": "B1 small",
+                                "price": 200
+                            },
+                            {
+                                "title": "B1 medium",
+                                "price": 100
+                            },
+                            {
+                                "title": "B1 large",
+                                "price": 300
+                            }
+                        ]
                     }
                 ]
             },
             {
-                "title": "Burger 2",
-                "items":
+                "title": "B2",
+                "subGroups":
                 [
                     {
-                        "title": "Burger 2 small",
-                        "price": 100
-                    },
-                    {
-                        "title": "Burger 2 medium",
-                        "price": 200
-                    },
-                    {
-                        "title": "Burger 2 large",
-                        "price": 300
+                        "title": "B2",
+                        "items":
+                        [
+                            {
+                                "title": "B2 small",
+                                "price": 200
+                            },
+                            {
+                                "title": "B2 medium",
+                                "price": 100
+                            },
+                            {
+                                "title": "B2 large",
+                                "price": 300
+                            }
+                        ]
                     }
                 ]
             },
             {
-                "title": "Burger 3",
-                "items":
+                "title": "B3",
+                "subGroups":
                 [
                     {
-                        "title": "Burger 3 small",
-                        "price": 100
-                    },
-                    {
-                        "title": "Burger 3 medium",
-                        "price": 200
-                    },
-                    {
-                        "title": "Burger 3 large",
-                        "price": 300
-                    }
-                ]
-            },
-            {
-                "title": "Burger 4",
-                "items":
-                [
-                    {
-                        "title": "Burger 4 small",
-                        "price": 100
-                    },
-                    {
-                        "title": "Burger 4 medium",
-                        "price": 200
-                    },
-                    {
-                        "title": "Burger 4 large",
-                        "price": 300
-                    }
-                ]
-            },
-            {
-                "title": "Burger 5",
-                "items":
-                [
-                    {
-                        "title": "Burger 5 small",
-                        "price": 100
-                    },
-                    {
-                        "title": "Burger 5 medium",
-                        "price": 200
-                    },
-                    {
-                        "title": "Burger 5 large",
-                        "price": 300
+                        "title": "B3",
+                        "items":
+                        [
+                            {
+                                "title": "B3 small",
+                                "price": 200
+                            },
+                            {
+                                "title": "B3 medium",
+                                "price": 100
+                            },
+                            {
+                                "title": "B3 large",
+                                "price": 300
+                            }
+                        ]
                     }
                 ]
             }
