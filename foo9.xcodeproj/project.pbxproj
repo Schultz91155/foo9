@@ -29,6 +29,9 @@
 		2DAAE5122B9348CE00D4EB6B /* GroupCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2DAAE5102B9348CE00D4EB6B /* GroupCell.xib */; };
 		2DAAE5152B94CCC400D4EB6B /* SubGroupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DAAE5132B94CCC400D4EB6B /* SubGroupCell.swift */; };
 		2DAAE5192B952B2E00D4EB6B /* SubGroupCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2DAAE5182B952B2D00D4EB6B /* SubGroupCell.xib */; };
+		2DAAE51B2B9664E100D4EB6B /* GalleryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DAAE51A2B9664E100D4EB6B /* GalleryViewController.swift */; };
+		2DAAE51E2B96669800D4EB6B /* GallaryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DAAE51C2B96669800D4EB6B /* GallaryCell.swift */; };
+		2DAAE51F2B96669800D4EB6B /* GallaryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2DAAE51D2B96669800D4EB6B /* GallaryCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,6 +59,9 @@
 		2DAAE5102B9348CE00D4EB6B /* GroupCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GroupCell.xib; sourceTree = "<group>"; };
 		2DAAE5132B94CCC400D4EB6B /* SubGroupCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubGroupCell.swift; sourceTree = "<group>"; };
 		2DAAE5182B952B2D00D4EB6B /* SubGroupCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SubGroupCell.xib; path = ../../../../../.Trash/SubGroupCell.xib; sourceTree = "<group>"; };
+		2DAAE51A2B9664E100D4EB6B /* GalleryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryViewController.swift; sourceTree = "<group>"; };
+		2DAAE51C2B96669800D4EB6B /* GallaryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GallaryCell.swift; sourceTree = "<group>"; };
+		2DAAE51D2B96669800D4EB6B /* GallaryCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GallaryCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +113,7 @@
 				2DAAE5072B92A06B00D4EB6B /* CollectionViewCell2.swift */,
 				2DAAE5082B92A06B00D4EB6B /* CollectionViewCell2.xib */,
 				2DAAE50D2B93479600D4EB6B /* ViewController4.swift */,
+				2DAAE51A2B9664E100D4EB6B /* GalleryViewController.swift */,
 				2DAAE5172B94CCD500D4EB6B /* Cells */,
 			);
 			path = foo9;
@@ -119,6 +126,8 @@
 				2DAAE5102B9348CE00D4EB6B /* GroupCell.xib */,
 				2DAAE5132B94CCC400D4EB6B /* SubGroupCell.swift */,
 				2DAAE5182B952B2D00D4EB6B /* SubGroupCell.xib */,
+				2DAAE51C2B96669800D4EB6B /* GallaryCell.swift */,
+				2DAAE51D2B96669800D4EB6B /* GallaryCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -182,6 +191,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2DAAE4EE2B811E3000D4EB6B /* LaunchScreen.storyboard in Resources */,
+				2DAAE51F2B96669800D4EB6B /* GallaryCell.xib in Resources */,
 				2DAAE5002B87E06F00D4EB6B /* GroupCollectionViewCell.xib in Resources */,
 				2DAAE5122B9348CE00D4EB6B /* GroupCell.xib in Resources */,
 				2DAAE4EB2B811E3000D4EB6B /* Assets.xcassets in Resources */,
@@ -201,6 +211,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2DAAE5022B87E79900D4EB6B /* Full2ViewController.swift in Sources */,
+				2DAAE51B2B9664E100D4EB6B /* GalleryViewController.swift in Sources */,
 				2DAAE4F92B84CB1E00D4EB6B /* CollectionViewCell.swift in Sources */,
 				2DAAE5112B9348CE00D4EB6B /* GroupCell.swift in Sources */,
 				2DAAE5062B929E0F00D4EB6B /* ViewController2.swift in Sources */,
@@ -210,6 +221,7 @@
 				2DAAE50E2B93479600D4EB6B /* ViewController4.swift in Sources */,
 				2DAAE4FC2B84D1BE00D4EB6B /* FullViewController.swift in Sources */,
 				2DAAE5092B92A06B00D4EB6B /* CollectionViewCell2.swift in Sources */,
+				2DAAE51E2B96669800D4EB6B /* GallaryCell.swift in Sources */,
 				2DAAE5152B94CCC400D4EB6B /* SubGroupCell.swift in Sources */,
 				2DAAE4E42B811E2C00D4EB6B /* SceneDelegate.swift in Sources */,
 				2DAAE4F62B811EB300D4EB6B /* Model.swift in Sources */,

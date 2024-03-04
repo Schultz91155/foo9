@@ -296,6 +296,22 @@ class Storage  {
     
 }
 
+class NewStorage {
+    static let shared = NewStorage()
+    
+    var storageGroups = [JSONGroups](){
+        didSet{
+            let encodedData = try! JSONEncoder().encode(self.storageGroups)
+            UserDefaults.standard.set(encodedData, forKey: "key")
+        }
+    }
+    
+    let images = ["cheesePizza","meatPizza","Bigburger"]
+    private init(){
+        
+    }
+}
+
 extension String{
     func widthOfString(usingFont font: UIFont) -> CGFloat {
         let fontAttributes = [NSAttributedString.Key.font: font]

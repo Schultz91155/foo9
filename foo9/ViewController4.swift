@@ -16,17 +16,21 @@ class ViewController4: UIViewController {
     @IBOutlet weak var createGroupOutlet: UIButton!
     
     
-    private var doubleTapGesture: UITapGestureRecognizer!
-    private var longPressGesture: UILongPressGestureRecognizer!
-    let key = "storage"
+    private var doubleTapGroupCollectionViwGesture: UITapGestureRecognizer!
+    private var doubleTapSubGroupCollectionViwGesture: UITapGestureRecognizer!
+    
+    private var longPressGestureGroupsCollectionView: UILongPressGestureRecognizer!
+    private var longPressGestureSubGroupsCollectionView: UILongPressGestureRecognizer!
+
     var selectedSection = 0
     
-    var storageGroups  = [JSONGroups]()
-    {
-        didSet{
-            save(storage: self.storageGroups)
-        }
-    }
+    
+
+    
+    
+//    var storageGroups  = NewStorage.shared.storageGroups
+
+    
     
     
     
@@ -34,13 +38,14 @@ class ViewController4: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         load()
+        
         setUpDoubleTapGroupCollectionView()
         setUpDoubleTapSubGroupCollectionView()
-        setupLongPress()
+        setupLongPressGroupsCollectionView()
+        setupLongPressSubGroupsCollectionView()
         groupsCollectionView.dataSource = self
         groupsCollectionView.delegate = self
         groupsCollectionView.register(UINib(nibName: "GroupCell", bundle: nil), forCellWithReuseIdentifier: "GroupCell")
-        
         subGroupsCollectionView.dataSource = self
         subGroupsCollectionView.delegate = self
         subGroupsCollectionView.register(UINib(nibName: "SubGroupCell", bundle: nil), forCellWithReuseIdentifier: "SubGroupCell")
@@ -61,125 +66,158 @@ class ViewController4: UIViewController {
         alarm.addAction(UIAlertAction(title: "Create", style: .default, handler: { [self, weak alarm] (_) in
             let textField = alarm?.textFields![0].text ?? "New group" // Force unwrapping because we know it exists.
             
-            let isContain = storageGroups.contains { groups in
+            let isContain = NewStorage.shared.storageGroups.contains { groups in
                 groups.self.title == textField
             }
             if (!isContain){
                 let newGroup = JSONGroups(title: textField, subGroups: [JSONSubGroup]())
-                self.storageGroups.append(newGroup)
+                NewStorage.shared.storageGroups.append(newGroup)
                 self.groupsCollectionView.reloadData()
-                save(storage: self.storageGroups)
+                
             }
         }))
         self.present(alarm, animated: true)
+        print(NewStorage.shared.storageGroups.count)
     }
     
     
     @IBAction func createSubGroup(_ sender: Any) {
 
         let newSubGroup = JSONSubGroup(title: "empty", image: "pizza",  subGroups: [JSONSubGroup](), items: [JSONItem]())
-        self.storageGroups[selectedSection].subGroups.append(newSubGroup)
+        NewStorage.shared.storageGroups[selectedSection].subGroups.append(newSubGroup)
         self.subGroupsCollectionView.reloadData()
+        
+        print(NewStorage.shared.storageGroups[0].subGroups.count)
 
     }
     
     
       func setUpDoubleTapGroupCollectionView() {
-          doubleTapGesture = UITapGestureRecognizer(target: self, action: #selector(didDoubleTapGroupCollectionView))
-          doubleTapGesture.numberOfTapsRequired = 2
-          groupsCollectionView.addGestureRecognizer(doubleTapGesture)
-          doubleTapGesture.delaysTouchesBegan = true
+          doubleTapGroupCollectionViwGesture = UITapGestureRecognizer(target: self, action: #selector(didDoubleTapGroupCollectionView))
+          doubleTapGroupCollectionViwGesture.numberOfTapsRequired = 2
+          groupsCollectionView.addGestureRecognizer(doubleTapGroupCollectionViwGesture)
+          doubleTapGroupCollectionViwGesture.delaysTouchesBegan = true
       }
     
     @objc func didDoubleTapGroupCollectionView() {
-           let pointInCollectionView = doubleTapGesture.location(in: groupsCollectionView)
+           let pointInCollectionView = doubleTapGroupCollectionViwGesture.location(in: groupsCollectionView)
            if let selectedIndexPath = groupsCollectionView.indexPathForItem(at: pointInCollectionView) {
-               let selectedCell = groupsCollectionView.cellForItem(at: selectedIndexPath)
                
                let alarm = UIAlertController(title: "Input new title", message: nil, preferredStyle: .alert)
                alarm.addTextField { (textField) in
-                   textField.text = self.storageGroups[selectedIndexPath.row].title
+                   textField.text = NewStorage.shared.storageGroups[selectedIndexPath.row].title
                }
                
                let cancelAction = UIAlertAction(title: "Cancel", style: .destructive)
                alarm.addAction(cancelAction)
                alarm.addAction(UIAlertAction(title: "Edit", style: .default, handler: { [self, weak alarm] (_) in
                    let textField = alarm?.textFields![0].text ?? "New group" // Force unwrapping because we know it exists.
-                   self.storageGroups[selectedIndexPath.row].title = textField
+                   NewStorage.shared.storageGroups[selectedIndexPath.row].title = textField
                    self.groupsCollectionView.reloadItems(at: [selectedIndexPath])
                }))
                self.present(alarm, animated: true)
 
            }
        }
-    
+
     func setUpDoubleTapSubGroupCollectionView() {
-        doubleTapGesture = UITapGestureRecognizer(target: self, action: #selector(didDoubleTapSubGroupCollectionView))
-        doubleTapGesture.numberOfTapsRequired = 2
-        subGroupsCollectionView.addGestureRecognizer(doubleTapGesture)
-        doubleTapGesture.delaysTouchesBegan = true
+        doubleTapSubGroupCollectionViwGesture = UITapGestureRecognizer(target: self, action: #selector(didDoubleTapSubGroupCollectionView))
+        doubleTapSubGroupCollectionViwGesture.numberOfTapsRequired = 2
+        subGroupsCollectionView.addGestureRecognizer(doubleTapSubGroupCollectionViwGesture)
+        doubleTapSubGroupCollectionViwGesture.delaysTouchesBegan = true
     }
 
-  @objc func didDoubleTapSubGroupCollectionView() {
-         let pointInCollectionView = doubleTapGesture.location(in: subGroupsCollectionView)
-
-         if let selectedIndexPath = subGroupsCollectionView.indexPathForItem(at: pointInCollectionView) {
-             let selectedCell = subGroupsCollectionView.cellForItem(at: selectedIndexPath) as!SubGroupCell
-             let pointInCollectionViewCell = doubleTapGesture.location(in: selectedCell)
-             
-             if selectedCell.titleSubGroup.bounds.contains(pointInCollectionViewCell){
-                 selectedCell.titleSubGroup.isUserInteractionEnabled = true
-                 selectedCell.editBtnOutlet.isHidden = false
-                 // TODO : pass data to SubGroupCell; end editing and save changes in subgroup by press End editing
-                 // TODO : createLongPressgesture by remove subgroup
-                 // TODO : reload subGroupsCollectionView by scroll groupsCollectionView
-                 
-                 
-                 
-                 
-                 
-             }
-             else if selectedCell.imageSubGroup.bounds.contains(pointInCollectionViewCell){
-                 print("image in \(selectedIndexPath)")
-             }
-
-         }
-     }
-        func setupLongPress(){
-            longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(didLongPress))
-            groupsCollectionView.addGestureRecognizer(longPressGesture)
-            longPressGesture.delaysTouchesBegan = true
+    @objc func didDoubleTapSubGroupCollectionView() {
+        let pointInCollectionView = doubleTapSubGroupCollectionViwGesture.location(in: subGroupsCollectionView)
+        if let selectedIndexPath = subGroupsCollectionView.indexPathForItem(at: pointInCollectionView) {
+            let selectedCell = subGroupsCollectionView.cellForItem(at: selectedIndexPath) as! SubGroupCell
+            let pointInCollectionViewCell = doubleTapSubGroupCollectionViwGesture.location(in: selectedCell)
+            
+            if selectedCell.titleSubGroup.bounds.contains(pointInCollectionViewCell){
+                selectedCell.titleSubGroup.isUserInteractionEnabled = true
+                selectedCell.editBtnOutlet.isHidden = false
+                
+                var currentSubGroup = NewStorage.shared.storageGroups[selectedSection].subGroups[selectedIndexPath.row]
+                selectedCell.subGroup = currentSubGroup
+                selectedCell.currentIndexPath = selectedIndexPath
+                selectedCell.currentSection = selectedSection
+                // TODO : pass data to SubGroupCell; end editing and save changes in subgroup by press End editing
+                // TODO : reload subGroupsCollectionView by scroll groupsCollectionView
+                
+            }
+            else if selectedCell.imageSubGroup.bounds.contains(pointInCollectionViewCell){
+                //                 selectedCell.imageSubGroup.image = UIImage(named: "meatPizza")
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                let galleryVC = storyboard.instantiateViewController(identifier: "galleryVC") as! GalleryViewController
+                self.present(galleryVC, animated: true)
+                
+                galleryVC.complition2 = { [weak self] image in
+                    guard let self = self else {return}
+                    selectedCell.imageSubGroup.image = UIImage(named: image)
+                    NewStorage.shared.storageGroups[selectedSection].subGroups[selectedIndexPath.row].image = image
+                }
+                
+            }
+        }
+    }
+        func setupLongPressGroupsCollectionView(){
+            longPressGestureGroupsCollectionView = UILongPressGestureRecognizer(target: self, action: #selector(didLongPressGropsCollectionView))
+            groupsCollectionView.addGestureRecognizer(longPressGestureGroupsCollectionView)
+            longPressGestureGroupsCollectionView.delaysTouchesBegan = true
         }
     
-        @objc func didLongPress() {
-            let pointInCollectionView = longPressGesture.location(in: groupsCollectionView)
+        @objc func didLongPressGropsCollectionView() {
+            let pointInCollectionView = longPressGestureGroupsCollectionView.location(in: groupsCollectionView)
             if let selectedIndexPath = groupsCollectionView.indexPathForItem(at: pointInCollectionView) {
                 let selectedCell = groupsCollectionView.cellForItem(at: selectedIndexPath)
                 let alarm = UIAlertController(title: "Delete?", message: nil, preferredStyle: .alert)
                 let cancelAction = UIAlertAction(title: "Cancel", style: .destructive)
                 alarm.addAction(cancelAction)
                 alarm.addAction(UIAlertAction(title: "OK", style: .default, handler: { [self, weak alarm] (_) in
-                    self.storageGroups.remove(at: selectedIndexPath.row)
+                    NewStorage.shared.storageGroups.remove(at: selectedIndexPath.row)
                     self.groupsCollectionView.reloadData()
                     self.subGroupsCollectionView.reloadData()
-                    save(storage: self.storageGroups)
+                    
                 }))
                 self.present(alarm, animated: true)
                 
             }
         }
+    
+    func setupLongPressSubGroupsCollectionView(){
+        longPressGestureSubGroupsCollectionView = UILongPressGestureRecognizer(target: self, action: #selector(didLongPressSubGropsCollectionView))
+        subGroupsCollectionView.addGestureRecognizer(longPressGestureSubGroupsCollectionView)
+        longPressGestureSubGroupsCollectionView.delaysTouchesBegan = true
+    }
+
+    @objc func didLongPressSubGropsCollectionView() {
+        let pointInCollectionView = longPressGestureSubGroupsCollectionView.location(in: subGroupsCollectionView)
+        if let selectedIndexPath = subGroupsCollectionView.indexPathForItem(at: pointInCollectionView) {
+            let selectedCell = subGroupsCollectionView.cellForItem(at: selectedIndexPath)
+            let alarm = UIAlertController(title: "Delete?", message: nil, preferredStyle: .alert)
+            let cancelAction = UIAlertAction(title: "Cancel", style: .destructive)
+            alarm.addAction(cancelAction)
+            alarm.addAction(UIAlertAction(title: "OK", style: .default, handler: { [self, weak alarm] (_) in
+                NewStorage.shared.storageGroups[selectedSection].subGroups.remove(at: selectedIndexPath.row)
+                self.subGroupsCollectionView.reloadData()
+                
+            }))
+            self.present(alarm, animated: true)
+            
+        }
+    }
 }
 
 extension ViewController4 : UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
         if (collectionView == groupsCollectionView){
-            return storageGroups.count
+            return NewStorage.shared.storageGroups.count
         } else{
-            if (storageGroups.isEmpty) {
+            if (NewStorage.shared.storageGroups.isEmpty) {
                 return 0 }
             else{
-                   return storageGroups[selectedSection].subGroups.count
+                   return NewStorage.shared.storageGroups[selectedSection].subGroups.count
                 }
         }
         
@@ -190,11 +228,11 @@ extension ViewController4 : UICollectionViewDelegate, UICollectionViewDataSource
         
         if (collectionView == groupsCollectionView){
             let cell = groupsCollectionView.dequeueReusableCell(withReuseIdentifier: "GroupCell", for: indexPath) as! GroupCell
-            cell.setupCell(group: storageGroups[indexPath.row])
+            cell.setupCell(group: NewStorage.shared.storageGroups[indexPath.row])
             return cell
         }else{
             let cell = subGroupsCollectionView.dequeueReusableCell(withReuseIdentifier: "SubGroupCell", for: indexPath) as! SubGroupCell
-            cell.setupCell(subGroup: storageGroups[selectedSection].subGroups[indexPath.row])
+            cell.setupCell(subGroup: NewStorage.shared.storageGroups[selectedSection].subGroups[indexPath.row])
             return cell
             
         }
@@ -206,19 +244,12 @@ extension ViewController4 : UICollectionViewDelegate, UICollectionViewDataSource
         
         
         if (collectionView == groupsCollectionView){
-            let groupName = storageGroups[indexPath.row].title
+            let groupName = NewStorage.shared.storageGroups[indexPath.row].title
             let width = groupName.widthOfString(usingFont: UIFont.systemFont(ofSize: 20)) + 10
             return CGSize(width: width, height: groupsCollectionView.bounds.height)
         } else{
             return CGSize(width: subGroupsCollectionView.bounds.width - 20, height: 120)
         }
-        
-        
-        
-        
-        
-        
-        
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         
@@ -247,31 +278,24 @@ extension ViewController4 : UICollectionViewDelegate, UICollectionViewDataSource
         }
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-
+        if (collectionView == groupsCollectionView){
+            selectedSection = indexPath.row
+            subGroupsCollectionView.reloadData()
+        } else{
+            
+        }
     }
 
 }
 extension ViewController4 {
-    
-    
-    func save(storage : [JSONGroups]){
-        do{
-            let encodedData = try JSONEncoder().encode(storage)
-            let defaults = UserDefaults.standard
-            defaults.set(encodedData, forKey: key)
-        } catch{
-            print ("Can't save")
-        }
-    }
-    
     func load() {
         let defaults = UserDefaults.standard
-        if let savedData = defaults.object(forKey: key) as? Data{
+        if let savedData = defaults.object(forKey: "key") as? Data{
             do{
                 let jsonString = String(data: savedData, encoding: .utf8)
                 print(jsonString!)
                 let decodedData = try JSONDecoder().decode([JSONGroups].self, from: savedData)
-                storageGroups = decodedData
+                NewStorage.shared.storageGroups = decodedData
             
             } catch{
                 print ("Can't load")
