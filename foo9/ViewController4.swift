@@ -282,7 +282,7 @@ extension ViewController4 : UICollectionViewDelegate, UICollectionViewDataSource
             selectedSection = indexPath.row
             subGroupsCollectionView.reloadData()
         } else{
-            
+            //TODO : push to fullscreen VC and add Items in SubGroup
         }
     }
 
