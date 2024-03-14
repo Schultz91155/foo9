@@ -91,6 +91,12 @@ class ViewController4: UIViewController {
 
     }
     
+    @IBAction func createPreset(_ sender: Any) {
+        let presetVC = storyboard?.instantiateViewController(identifier: "PresetVC") as! PresetViewController
+        self.present(presetVC, animated: true)
+    }
+    
+    
     
       func setUpDoubleTapGroupCollectionView() {
           doubleTapGroupCollectionViwGesture = UITapGestureRecognizer(target: self, action: #selector(didDoubleTapGroupCollectionView))
@@ -141,8 +147,7 @@ class ViewController4: UIViewController {
                 selectedCell.subGroup = currentSubGroup
                 selectedCell.currentIndexPath = selectedIndexPath
                 selectedCell.currentSection = selectedSection
-                // TODO : pass data to SubGroupCell; end editing and save changes in subgroup by press End editing
-                // TODO : reload subGroupsCollectionView by scroll groupsCollectionView
+
                 
             }
             else if selectedCell.imageSubGroup.bounds.contains(pointInCollectionViewCell){
@@ -282,7 +287,10 @@ extension ViewController4 : UICollectionViewDelegate, UICollectionViewDataSource
             selectedSection = indexPath.row
             subGroupsCollectionView.reloadData()
         } else{
-            //TODO : push to fullscreen VC and add Items in SubGroup
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let itemVC = storyboard.instantiateViewController(identifier: "itemVC") as! ItemViewController
+            itemVC.subGroup = NewStorage.shared.storageGroups[selectedSection].subGroups[indexPath.row]
+            self.present(itemVC, animated: true)
         }
     }
 
@@ -292,8 +300,8 @@ extension ViewController4 {
         let defaults = UserDefaults.standard
         if let savedData = defaults.object(forKey: "key") as? Data{
             do{
-                let jsonString = String(data: savedData, encoding: .utf8)
-                print(jsonString!)
+//                let jsonString = String(data: savedData, encoding: .utf8)
+//                print(jsonString!)
                 let decodedData = try JSONDecoder().decode([JSONGroups].self, from: savedData)
                 NewStorage.shared.storageGroups = decodedData
             

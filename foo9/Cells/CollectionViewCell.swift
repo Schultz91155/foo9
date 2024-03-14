@@ -16,9 +16,9 @@ class CollectionViewCell: UICollectionViewCell {
         super.awakeFromNib()
     }
 
-    func setupCell(item : Item){
-        self.image.image = UIImage(named: item.image)!
-        self.title.text = item.title
-    }
+//    func setupCell(item : Item){
+//        self.image.image = UIImage(named: item.image)!
+//        self.title.text = item.title
+//    }
 
 }

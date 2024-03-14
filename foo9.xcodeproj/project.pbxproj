@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2D25741E2BA1B36100732EC5 /* EditSubGroupItemsAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D25741D2BA1B36100732EC5 /* EditSubGroupItemsAlert.swift */; };
+		2D2574202BA1B39B00732EC5 /* EditSubGroupItemsAlert.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D25741F2BA1B39B00732EC5 /* EditSubGroupItemsAlert.xib */; };
 		2DAAE4E22B811E2C00D4EB6B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DAAE4E12B811E2C00D4EB6B /* AppDelegate.swift */; };
 		2DAAE4E42B811E2C00D4EB6B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DAAE4E32B811E2C00D4EB6B /* SceneDelegate.swift */; };
 		2DAAE4E62B811E2C00D4EB6B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DAAE4E52B811E2C00D4EB6B /* ViewController.swift */; };
@@ -19,11 +21,6 @@
 		2DAAE4FC2B84D1BE00D4EB6B /* FullViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DAAE4FB2B84D1BE00D4EB6B /* FullViewController.swift */; };
 		2DAAE4FF2B87E06F00D4EB6B /* GroupCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DAAE4FD2B87E06F00D4EB6B /* GroupCollectionViewCell.swift */; };
 		2DAAE5002B87E06F00D4EB6B /* GroupCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2DAAE4FE2B87E06F00D4EB6B /* GroupCollectionViewCell.xib */; };
-		2DAAE5022B87E79900D4EB6B /* Full2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DAAE5012B87E79900D4EB6B /* Full2ViewController.swift */; };
-		2DAAE5042B92958900D4EB6B /* file.json in Resources */ = {isa = PBXBuildFile; fileRef = 2DAAE5032B92958900D4EB6B /* file.json */; };
-		2DAAE5062B929E0F00D4EB6B /* ViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DAAE5052B929E0F00D4EB6B /* ViewController2.swift */; };
-		2DAAE5092B92A06B00D4EB6B /* CollectionViewCell2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DAAE5072B92A06B00D4EB6B /* CollectionViewCell2.swift */; };
-		2DAAE50A2B92A06B00D4EB6B /* CollectionViewCell2.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2DAAE5082B92A06B00D4EB6B /* CollectionViewCell2.xib */; };
 		2DAAE50E2B93479600D4EB6B /* ViewController4.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DAAE50D2B93479600D4EB6B /* ViewController4.swift */; };
 		2DAAE5112B9348CE00D4EB6B /* GroupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DAAE50F2B9348CE00D4EB6B /* GroupCell.swift */; };
 		2DAAE5122B9348CE00D4EB6B /* GroupCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2DAAE5102B9348CE00D4EB6B /* GroupCell.xib */; };
@@ -32,9 +29,17 @@
 		2DAAE51B2B9664E100D4EB6B /* GalleryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DAAE51A2B9664E100D4EB6B /* GalleryViewController.swift */; };
 		2DAAE51E2B96669800D4EB6B /* GallaryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DAAE51C2B96669800D4EB6B /* GallaryCell.swift */; };
 		2DAAE51F2B96669800D4EB6B /* GallaryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2DAAE51D2B96669800D4EB6B /* GallaryCell.xib */; };
+		2DAAE5212B9A6F7400D4EB6B /* ItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DAAE5202B9A6F7400D4EB6B /* ItemViewController.swift */; };
+		2DAAE5232B9F86CB00D4EB6B /* PresetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DAAE5222B9F86CA00D4EB6B /* PresetViewController.swift */; };
+		2DAAE5262B9F905900D4EB6B /* PresetCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DAAE5242B9F905900D4EB6B /* PresetCell.swift */; };
+		2DAAE5272B9F905900D4EB6B /* PresetCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2DAAE5252B9F905900D4EB6B /* PresetCell.xib */; };
+		2DAAE5292B9F924800D4EB6B /* PresetBuilderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DAAE5282B9F924800D4EB6B /* PresetBuilderViewController.swift */; };
+		2DAAE52B2B9F925900D4EB6B /* PresetEditorSingleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DAAE52A2B9F925900D4EB6B /* PresetEditorSingleViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2D25741D2BA1B36100732EC5 /* EditSubGroupItemsAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditSubGroupItemsAlert.swift; sourceTree = "<group>"; };
+		2D25741F2BA1B39B00732EC5 /* EditSubGroupItemsAlert.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditSubGroupItemsAlert.xib; sourceTree = "<group>"; };
 		2DAAE4DE2B811E2C00D4EB6B /* foo9.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = foo9.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2DAAE4E12B811E2C00D4EB6B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2DAAE4E32B811E2C00D4EB6B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -49,11 +54,6 @@
 		2DAAE4FB2B84D1BE00D4EB6B /* FullViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullViewController.swift; sourceTree = "<group>"; };
 		2DAAE4FD2B87E06F00D4EB6B /* GroupCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupCollectionViewCell.swift; sourceTree = "<group>"; };
 		2DAAE4FE2B87E06F00D4EB6B /* GroupCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GroupCollectionViewCell.xib; sourceTree = "<group>"; };
-		2DAAE5012B87E79900D4EB6B /* Full2ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Full2ViewController.swift; sourceTree = "<group>"; };
-		2DAAE5032B92958900D4EB6B /* file.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = file.json; sourceTree = "<group>"; };
-		2DAAE5052B929E0F00D4EB6B /* ViewController2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController2.swift; sourceTree = "<group>"; };
-		2DAAE5072B92A06B00D4EB6B /* CollectionViewCell2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell2.swift; sourceTree = "<group>"; };
-		2DAAE5082B92A06B00D4EB6B /* CollectionViewCell2.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CollectionViewCell2.xib; sourceTree = "<group>"; };
 		2DAAE50D2B93479600D4EB6B /* ViewController4.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController4.swift; sourceTree = "<group>"; };
 		2DAAE50F2B9348CE00D4EB6B /* GroupCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupCell.swift; sourceTree = "<group>"; };
 		2DAAE5102B9348CE00D4EB6B /* GroupCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GroupCell.xib; sourceTree = "<group>"; };
@@ -62,6 +62,12 @@
 		2DAAE51A2B9664E100D4EB6B /* GalleryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryViewController.swift; sourceTree = "<group>"; };
 		2DAAE51C2B96669800D4EB6B /* GallaryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GallaryCell.swift; sourceTree = "<group>"; };
 		2DAAE51D2B96669800D4EB6B /* GallaryCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GallaryCell.xib; sourceTree = "<group>"; };
+		2DAAE5202B9A6F7400D4EB6B /* ItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemViewController.swift; sourceTree = "<group>"; };
+		2DAAE5222B9F86CA00D4EB6B /* PresetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresetViewController.swift; sourceTree = "<group>"; };
+		2DAAE5242B9F905900D4EB6B /* PresetCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresetCell.swift; sourceTree = "<group>"; };
+		2DAAE5252B9F905900D4EB6B /* PresetCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PresetCell.xib; sourceTree = "<group>"; };
+		2DAAE5282B9F924800D4EB6B /* PresetBuilderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresetBuilderViewController.swift; sourceTree = "<group>"; };
+		2DAAE52A2B9F925900D4EB6B /* PresetEditorSingleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresetEditorSingleViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +81,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2D25741C2BA1B31200732EC5 /* Alerts */ = {
+			isa = PBXGroup;
+			children = (
+				2D25741D2BA1B36100732EC5 /* EditSubGroupItemsAlert.swift */,
+				2D25741F2BA1B39B00732EC5 /* EditSubGroupItemsAlert.xib */,
+			);
+			path = Alerts;
+			sourceTree = "<group>";
+		};
 		2DAAE4D52B811E2C00D4EB6B = {
 			isa = PBXGroup;
 			children = (
@@ -98,22 +113,18 @@
 				2DAAE4E32B811E2C00D4EB6B /* SceneDelegate.swift */,
 				2DAAE4E52B811E2C00D4EB6B /* ViewController.swift */,
 				2DAAE4FB2B84D1BE00D4EB6B /* FullViewController.swift */,
-				2DAAE5012B87E79900D4EB6B /* Full2ViewController.swift */,
 				2DAAE4E72B811E2C00D4EB6B /* Main.storyboard */,
 				2DAAE4EA2B811E3000D4EB6B /* Assets.xcassets */,
 				2DAAE4EC2B811E3000D4EB6B /* LaunchScreen.storyboard */,
 				2DAAE4EF2B811E3000D4EB6B /* Info.plist */,
 				2DAAE4F52B811EB300D4EB6B /* Model.swift */,
-				2DAAE4F72B84CB1E00D4EB6B /* CollectionViewCell.swift */,
-				2DAAE4F82B84CB1E00D4EB6B /* CollectionViewCell.xib */,
-				2DAAE4FD2B87E06F00D4EB6B /* GroupCollectionViewCell.swift */,
-				2DAAE4FE2B87E06F00D4EB6B /* GroupCollectionViewCell.xib */,
-				2DAAE5032B92958900D4EB6B /* file.json */,
-				2DAAE5052B929E0F00D4EB6B /* ViewController2.swift */,
-				2DAAE5072B92A06B00D4EB6B /* CollectionViewCell2.swift */,
-				2DAAE5082B92A06B00D4EB6B /* CollectionViewCell2.xib */,
 				2DAAE50D2B93479600D4EB6B /* ViewController4.swift */,
+				2DAAE5202B9A6F7400D4EB6B /* ItemViewController.swift */,
 				2DAAE51A2B9664E100D4EB6B /* GalleryViewController.swift */,
+				2DAAE5222B9F86CA00D4EB6B /* PresetViewController.swift */,
+				2DAAE5282B9F924800D4EB6B /* PresetBuilderViewController.swift */,
+				2DAAE52A2B9F925900D4EB6B /* PresetEditorSingleViewController.swift */,
+				2D25741C2BA1B31200732EC5 /* Alerts */,
 				2DAAE5172B94CCD500D4EB6B /* Cells */,
 			);
 			path = foo9;
@@ -128,6 +139,12 @@
 				2DAAE5182B952B2D00D4EB6B /* SubGroupCell.xib */,
 				2DAAE51C2B96669800D4EB6B /* GallaryCell.swift */,
 				2DAAE51D2B96669800D4EB6B /* GallaryCell.xib */,
+				2DAAE5242B9F905900D4EB6B /* PresetCell.swift */,
+				2DAAE5252B9F905900D4EB6B /* PresetCell.xib */,
+				2DAAE4F72B84CB1E00D4EB6B /* CollectionViewCell.swift */,
+				2DAAE4F82B84CB1E00D4EB6B /* CollectionViewCell.xib */,
+				2DAAE4FD2B87E06F00D4EB6B /* GroupCollectionViewCell.swift */,
+				2DAAE4FE2B87E06F00D4EB6B /* GroupCollectionViewCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -192,11 +209,11 @@
 			files = (
 				2DAAE4EE2B811E3000D4EB6B /* LaunchScreen.storyboard in Resources */,
 				2DAAE51F2B96669800D4EB6B /* GallaryCell.xib in Resources */,
+				2D2574202BA1B39B00732EC5 /* EditSubGroupItemsAlert.xib in Resources */,
 				2DAAE5002B87E06F00D4EB6B /* GroupCollectionViewCell.xib in Resources */,
 				2DAAE5122B9348CE00D4EB6B /* GroupCell.xib in Resources */,
 				2DAAE4EB2B811E3000D4EB6B /* Assets.xcassets in Resources */,
-				2DAAE5042B92958900D4EB6B /* file.json in Resources */,
-				2DAAE50A2B92A06B00D4EB6B /* CollectionViewCell2.xib in Resources */,
+				2DAAE5272B9F905900D4EB6B /* PresetCell.xib in Resources */,
 				2DAAE5192B952B2E00D4EB6B /* SubGroupCell.xib in Resources */,
 				2DAAE4FA2B84CB1E00D4EB6B /* CollectionViewCell.xib in Resources */,
 				2DAAE4E92B811E2C00D4EB6B /* Main.storyboard in Resources */,
@@ -210,20 +227,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2DAAE5022B87E79900D4EB6B /* Full2ViewController.swift in Sources */,
+				2DAAE5212B9A6F7400D4EB6B /* ItemViewController.swift in Sources */,
 				2DAAE51B2B9664E100D4EB6B /* GalleryViewController.swift in Sources */,
 				2DAAE4F92B84CB1E00D4EB6B /* CollectionViewCell.swift in Sources */,
 				2DAAE5112B9348CE00D4EB6B /* GroupCell.swift in Sources */,
-				2DAAE5062B929E0F00D4EB6B /* ViewController2.swift in Sources */,
+				2D25741E2BA1B36100732EC5 /* EditSubGroupItemsAlert.swift in Sources */,
 				2DAAE4FF2B87E06F00D4EB6B /* GroupCollectionViewCell.swift in Sources */,
 				2DAAE4E62B811E2C00D4EB6B /* ViewController.swift in Sources */,
 				2DAAE4E22B811E2C00D4EB6B /* AppDelegate.swift in Sources */,
+				2DAAE5292B9F924800D4EB6B /* PresetBuilderViewController.swift in Sources */,
 				2DAAE50E2B93479600D4EB6B /* ViewController4.swift in Sources */,
+				2DAAE5232B9F86CB00D4EB6B /* PresetViewController.swift in Sources */,
 				2DAAE4FC2B84D1BE00D4EB6B /* FullViewController.swift in Sources */,
-				2DAAE5092B92A06B00D4EB6B /* CollectionViewCell2.swift in Sources */,
 				2DAAE51E2B96669800D4EB6B /* GallaryCell.swift in Sources */,
 				2DAAE5152B94CCC400D4EB6B /* SubGroupCell.swift in Sources */,
+				2DAAE52B2B9F925900D4EB6B /* PresetEditorSingleViewController.swift in Sources */,
 				2DAAE4E42B811E2C00D4EB6B /* SceneDelegate.swift in Sources */,
+				2DAAE5262B9F905900D4EB6B /* PresetCell.swift in Sources */,
 				2DAAE4F62B811EB300D4EB6B /* Model.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

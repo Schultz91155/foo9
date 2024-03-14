@@ -15,8 +15,8 @@ class GroupCollectionViewCell: UICollectionViewCell {
         // Initialization code
     }
     
-    func setupCell(group : AbstractGroup){
-        self.titleLabel.text = group.name
-    }
+//    func setupCell(group : AbstractGroup){
+//        self.titleLabel.text = group.name
+//    }
 
 }
