@@ -18,18 +18,18 @@
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Preset title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Klb-oC-aSh">
-                        <rect key="frame" x="0.0" y="0.0" width="207" height="30"/>
+                        <rect key="frame" x="0.0" y="0.0" width="207" height="25"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="30" id="27d-VT-Hyh"/>
+                            <constraint firstAttribute="height" constant="25" id="27d-VT-Hyh"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Type" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gg4-kM-LRR">
-                        <rect key="frame" x="0.0" y="45" width="207" height="30"/>
+                        <rect key="frame" x="0.0" y="35" width="207" height="25"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="30" id="m2N-on-NZI"/>
+                            <constraint firstAttribute="height" constant="25" id="m2N-on-NZI"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
@@ -43,7 +43,7 @@
                 <constraint firstAttribute="trailing" secondItem="Klb-oC-aSh" secondAttribute="trailing" id="4hB-wN-aS5"/>
                 <constraint firstItem="Klb-oC-aSh" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="6DW-r0-ABn"/>
                 <constraint firstItem="Gg4-kM-LRR" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="87U-zo-nSJ"/>
-                <constraint firstItem="Gg4-kM-LRR" firstAttribute="top" secondItem="Klb-oC-aSh" secondAttribute="bottom" constant="15" id="JSX-wq-I2d"/>
+                <constraint firstItem="Gg4-kM-LRR" firstAttribute="top" secondItem="Klb-oC-aSh" secondAttribute="bottom" constant="10" id="JSX-wq-I2d"/>
                 <constraint firstItem="Klb-oC-aSh" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="PgZ-Ej-lbO"/>
                 <constraint firstAttribute="trailing" secondItem="Gg4-kM-LRR" secondAttribute="trailing" id="QbK-oD-ETB"/>
             </constraints>

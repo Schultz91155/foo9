@@ -7,7 +7,7 @@
 
 import UIKit
 
-class PresetEditorSingleViewController: UIViewController {
+class PresetEditorViewController: UIViewController {
 
     
     
@@ -15,7 +15,9 @@ class PresetEditorSingleViewController: UIViewController {
     @IBOutlet weak var presetTitleLabel: UILabel!
     @IBOutlet weak var mainSubGroupTitleLabel: UILabel!
     @IBOutlet weak var mainSubGroupItems: UISegmentedControl!
-
+    @IBOutlet weak var secondarySubGroupTitleLabel: UILabel!
+    @IBOutlet weak var secondarySubGroupItems: UISegmentedControl!
+    @IBOutlet weak var editSecondarySubgroupTitle: UIButton!
     
 
     
@@ -42,6 +44,7 @@ class PresetEditorSingleViewController: UIViewController {
         setupSG()
         setupvisualEffectView()
         mainSubGroupItems.addTarget(self, action: #selector(editItem(_: )), for: .valueChanged)
+        secondarySubGroupItems.addTarget(self, action: #selector(editItem(_: )), for: .valueChanged)
     }
     
 
@@ -94,6 +97,22 @@ class PresetEditorSingleViewController: UIViewController {
         self.present(alert, animated: true)
     }
     
+    @IBAction func editSecondarySubGroupTitle(_ sender: Any) {
+        let alert = UIAlertController(title: "Change preset secondary subGroup title?", message: nil, preferredStyle: .alert)
+        alert.addTextField { (textField) in
+            textField.placeholder = "Enter new secondary subGroup title"
+            
+        }
+        let cancel = UIAlertAction(title: "Cancel", style: .cancel)
+        alert.addAction(cancel)
+        let edit = UIAlertAction(title: "Edit", style:.default, handler: { [self, weak alert] (_) in
+            let textField = alert?.textFields![0].text ?? "New main subgroup title"
+            PresetsStorage.shared.presets[indexPath].secondarySubGroupTitle = textField
+            secondarySubGroupTitleLabel.text = textField
+        })
+        alert.addAction(edit)
+        self.present(alert, animated: true)
+    }
     
 
     
@@ -101,11 +120,38 @@ class PresetEditorSingleViewController: UIViewController {
 
 }
 
-extension PresetEditorSingleViewController{
+extension PresetEditorViewController{
     func setupLabels(){
         preset = PresetsStorage.shared.presets[indexPath]
         presetTitleLabel.text = preset.title
         mainSubGroupTitleLabel.text = preset.mainSubGroupTitle
+        
+        switch (preset.type){
+            
+        case .single:
+            secondarySubGroupTitleLabel.isHidden = true
+            secondarySubGroupItems.isHidden = true
+            editSecondarySubgroupTitle.isHidden = true
+            mainSubGroupItems.removeAllSegments()
+            for (index, item) in preset.mainSubGroupItems.enumerated(){
+                mainSubGroupItems.insertSegment(withTitle: item, at: index, animated: false)
+            }
+        case .double:
+            editSecondarySubgroupTitle.isHidden = false
+            secondarySubGroupTitleLabel.isHidden = false
+            secondarySubGroupItems.isHidden = false
+            secondarySubGroupTitleLabel.text = preset.secondarySubGroupTitle
+            secondarySubGroupItems.removeAllSegments()
+            
+            if let secondarySubGroupItems = preset.secondarySubGroupItems{
+                for (index, item) in preset.secondarySubGroupItems!.enumerated(){
+                    self.secondarySubGroupItems.insertSegment(withTitle: item, at: index, animated: false)
+                }
+            }
+            
+            
+        }
+        
         
   
         
@@ -116,7 +162,10 @@ extension PresetEditorSingleViewController{
         for (index, item) in preset.mainSubGroupItems.enumerated(){
             mainSubGroupItems.insertSegment(withTitle: item, at: index, animated: false)
         }
+
     }
+    
+
     
     func animateIn(){
         editSubGroupItemsAlert.transform = CGAffineTransform.init(scaleX: 1.3, y: 1.3)
@@ -150,11 +199,12 @@ extension PresetEditorSingleViewController{
         
     }
     
-    func setEditSubGroupItemsAlert(){
-
+    func setEditSubGroupItemsAlert(sender : String){
+        
+        
         view.addSubview(editSubGroupItemsAlert)
         editSubGroupItemsAlert.center = view.center
-        editSubGroupItemsAlert.setupAlert(title: "Edit?", leftButton: "Cancel", rightButton: "Edit", middleButton: "Delete")
+        editSubGroupItemsAlert.setupAlert(title: "Edit?", leftButton: "Cancel", rightButton: "Edit", middleButton: "Delete", sender: sender)
         animateIn()
 
         
@@ -162,21 +212,56 @@ extension PresetEditorSingleViewController{
 
 }
 
-extension PresetEditorSingleViewController : EditSubGroupItemsAlertDelegate{
+extension PresetEditorViewController : EditSubGroupItemsAlertDelegate{
+    
+    
+    
+    
+    
     func leftButtonTapped() {
+        
         animateOut()
+        
     }
     
-    func rightButtonTapped() {
-
+    func rightButtonTapped(sender: String) {
+        
+        var contaner = [String]()
+        var segmentedControl = UISegmentedControl()
+        
+        switch (sender){
+            case "mainSubGroupItems" :
+                contaner = PresetsStorage.shared.presets[indexPath].mainSubGroupItems
+                segmentedControl = self.mainSubGroupItems
+            case "secondarySubGroupItems":
+                contaner = PresetsStorage.shared.presets[indexPath].secondarySubGroupItems!
+                segmentedControl = self.secondarySubGroupItems
+        default:
+            contaner = [String]()
+            segmentedControl = UISegmentedControl()
+        }
+        
+        
         let textField = editSubGroupItemsAlert.textField
-        let isContain = PresetsStorage.shared.presets[indexPath].mainSubGroupItems.contains { item in
+        let isContain = contaner.contains { item in
             item == textField?.text
         }
         if (!isContain){
-            PresetsStorage.shared.presets[indexPath].mainSubGroupItems[mainSubGroupItems.selectedSegmentIndex] = (textField?.text)! // right button is disabled if textfield is empty
-            mainSubGroupItems.setTitle(textField?.text, forSegmentAt: mainSubGroupItems.selectedSegmentIndex)
+            
+            switch (sender){
+                case "mainSubGroupItems" :
+                    PresetsStorage.shared.presets[indexPath].mainSubGroupItems[segmentedControl.selectedSegmentIndex] = (textField?.text)!
+                case "secondarySubGroupItems":
+                PresetsStorage.shared.presets[indexPath].secondarySubGroupItems?[segmentedControl.selectedSegmentIndex] = (textField?.text)!
+                    
+            default:
+                contaner = [String]()
+                segmentedControl = UISegmentedControl()
+            }
+            segmentedControl.setTitle(textField?.text, forSegmentAt: segmentedControl.selectedSegmentIndex)
+            
             animateOut()
+            textField?.text = ""
         } else {
             let alert = UIAlertController(title: "Failed", message: "This item is already exists ", preferredStyle: .alert)
             let ok = UIAlertAction(title: "Ok", style: .cancel)
@@ -187,14 +272,51 @@ extension PresetEditorSingleViewController : EditSubGroupItemsAlertDelegate{
         
     }
     
-    func middleButtonTapped() {
-        let countItemsInSubgroup = PresetsStorage.shared.presets[indexPath].mainSubGroupItems.count
-        let selectedIndex = mainSubGroupItems.selectedSegmentIndex
+    func middleButtonTapped(sender: String) {
+        
+        var contaner :[String]!
+        var segmentedControl : UISegmentedControl!
+        
+        switch (sender){
+            case "mainSubGroupItems" :
+                contaner = PresetsStorage.shared.presets[indexPath].mainSubGroupItems
+                segmentedControl = self.mainSubGroupItems
+            case "secondarySubGroupItems":
+            contaner = PresetsStorage.shared.presets[indexPath].secondarySubGroupItems!
+            segmentedControl = self.secondarySubGroupItems
+        default:
+            contaner = [String]()
+            segmentedControl = UISegmentedControl()
+        }
+        
+        let countItemsInSubgroup = contaner.count
+        let selectedIndex = segmentedControl.selectedSegmentIndex
+        
         if (countItemsInSubgroup > 1){
-            PresetsStorage.shared.presets[indexPath].mainSubGroupItems.remove(at: selectedIndex)
+            
+            switch (sender){
+                case "mainSubGroupItems" :
+                PresetsStorage.shared.presets[indexPath].mainSubGroupItems.remove(at: selectedIndex)
+                mainSubGroupItems.removeAllSegments()
+                for (index, item) in PresetsStorage.shared.presets[indexPath].mainSubGroupItems.enumerated(){
+                    mainSubGroupItems.insertSegment(withTitle: item, at: index, animated: false)
+                }
+                    
+                case "secondarySubGroupItems":
+                PresetsStorage.shared.presets[indexPath].secondarySubGroupItems!.remove(at: selectedIndex)
+                secondarySubGroupItems.removeAllSegments()
+                for (index, item) in PresetsStorage.shared.presets[indexPath].secondarySubGroupItems!.enumerated(){
+                    secondarySubGroupItems.insertSegment(withTitle: item, at: index, animated: false)
+                }
+                
+            default:
+                contaner = [String]()
+                segmentedControl = UISegmentedControl()
+            }
             
             animateOut()
-            setupSG()
+
+            
         } else{
             let alert = UIAlertController(title: "Failed", message: "This  is last item", preferredStyle: .alert)
             let ok = UIAlertAction(title: "OK", style: .cancel)
@@ -205,7 +327,11 @@ extension PresetEditorSingleViewController : EditSubGroupItemsAlertDelegate{
     }
     
     @objc func editItem(_ sender: UISegmentedControl) {
-        setEditSubGroupItemsAlert()
+        if (sender == mainSubGroupItems){
+            setEditSubGroupItemsAlert(sender: "mainSubGroupItems")
+        }else{
+            setEditSubGroupItemsAlert(sender: "secondarySubGroupItems")
+        }
     }
     
     

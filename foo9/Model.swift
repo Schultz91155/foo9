@@ -43,6 +43,8 @@ struct Preset : Codable{
     var title : String
     var mainSubGroupTitle : String
     var mainSubGroupItems : [String]
+    var secondarySubGroupTitle : String?
+    var secondarySubGroupItems : [String]?
     var type : PresetType
 }
 

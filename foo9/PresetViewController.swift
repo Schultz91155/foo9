@@ -72,7 +72,7 @@ extension PresetViewController : UICollectionViewDataSource, UICollectionViewDel
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: presetsCollectionView.bounds.width / 2 - 10, height: 75)
+        return CGSize(width: presetsCollectionView.bounds.width / 2 - 10, height: 60)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
@@ -88,16 +88,10 @@ extension PresetViewController : UICollectionViewDataSource, UICollectionViewDel
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let currentPreset = PresetsStorage.shared.presets[indexPath.row]
-        switch(currentPreset.type){
-            
-        case .single:
-            let presetSingleEditorVC = storyboard?.instantiateViewController(identifier: "PresetSingleEditorVC") as! PresetEditorSingleViewController
-            presetSingleEditorVC.indexPath = indexPath.row
-            self.present(presetSingleEditorVC, animated: true)
-        case .double:
-            print("foo")
-        }
+        
+        let presetSingleEditorVC = storyboard?.instantiateViewController(identifier: "PresetEditorVC") as! PresetEditorViewController
+        presetSingleEditorVC.indexPath = indexPath.row
+        self.present(presetSingleEditorVC, animated: true)
     }
     
 }

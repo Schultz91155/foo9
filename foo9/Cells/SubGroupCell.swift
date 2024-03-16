@@ -11,7 +11,7 @@ class SubGroupCell: UICollectionViewCell, UITextFieldDelegate {
 
     @IBOutlet weak var imageSubGroup: UIImageView!
     @IBOutlet weak var titleSubGroup: UITextField!
-    @IBOutlet weak var priceSubGroup: UITextField!
+
     @IBOutlet weak var editBtnOutlet: UIButton!
    
     var subGroup : JSONSubGroup!
@@ -23,7 +23,6 @@ class SubGroupCell: UICollectionViewCell, UITextFieldDelegate {
         prepareForReuse()
         titleSubGroup.delegate = self
         titleSubGroup.isUserInteractionEnabled = false
-        priceSubGroup.isUserInteractionEnabled = false
         editBtnOutlet.isHidden = true
         
         
@@ -32,7 +31,7 @@ class SubGroupCell: UICollectionViewCell, UITextFieldDelegate {
     func setupCell(subGroup : JSONSubGroup){
         self.imageSubGroup.image = UIImage(named: subGroup.image)!
         self.titleSubGroup.text = subGroup.title
-        self.priceSubGroup.text = "\(subGroup.price)"
+        
         
     }
     

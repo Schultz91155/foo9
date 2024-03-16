@@ -10,8 +10,8 @@ import UIKit
 
 protocol EditSubGroupItemsAlertDelegate {
     func leftButtonTapped()
-    func rightButtonTapped()
-    func middleButtonTapped()
+    func rightButtonTapped(sender: String)
+    func middleButtonTapped(sender: String)
     
 }
 
@@ -24,8 +24,9 @@ class EditSubGroupItemsAlert: UIView {
     @IBOutlet weak var middleButton: UIButton!
     
     var delegate : EditSubGroupItemsAlertDelegate?
+    var sender: String!
     
-    func setupAlert(title: String, leftButton: String, rightButton: String, middleButton: String ){
+    func setupAlert(title: String, leftButton: String, rightButton: String, middleButton: String, sender: String){
         self.titleLable.text = title
         self.leftButton.setTitle(leftButton, for: .normal)
         self.rightButton.setTitle(rightButton, for: .normal)
@@ -34,6 +35,7 @@ class EditSubGroupItemsAlert: UIView {
         self.rightButton.alpha = 0.5
         self.textField.addTarget(self, action: #selector(isTextFiledEmpty(sender:)), for: UIControl.Event.editingChanged)
         textField.placeholder = "Input new item"
+        self.sender = sender
         
     }
     @IBAction func leftButtonTapped(_ sender: Any) {
@@ -41,11 +43,11 @@ class EditSubGroupItemsAlert: UIView {
     }
     
     @IBAction func rightButtonTapped(_ sender: Any) {
-        delegate?.rightButtonTapped()
+        delegate?.rightButtonTapped(sender: self.sender)
     }
     
     @IBAction func middleButtonTapped(_ sender: Any) {
-        delegate?.middleButtonTapped()
+        delegate?.middleButtonTapped(sender: self.sender)
     }
     @objc func isTextFiledEmpty(sender : UITextView){
         if sender.text.isEmpty{

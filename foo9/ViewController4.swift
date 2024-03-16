@@ -77,18 +77,19 @@ class ViewController4: UIViewController {
             }
         }))
         self.present(alarm, animated: true)
-        print(NewStorage.shared.storageGroups.count)
+        
     }
     
     
     @IBAction func createSubGroup(_ sender: Any) {
 
-        let newSubGroup = JSONSubGroup(title: "empty", image: "pizza",  subGroups: [JSONSubGroup](), items: [JSONItem]())
-        NewStorage.shared.storageGroups[selectedSection].subGroups.append(newSubGroup)
-        self.subGroupsCollectionView.reloadData()
+//        let newSubGroup = JSONSubGroup(title: "empty", image: "pizza",  subGroups: [JSONSubGroup](), items: [JSONItem]())
+//        NewStorage.shared.storageGroups[selectedSection].subGroups.append(newSubGroup)
+//        self.subGroupsCollectionView.reloadData()
         
-        print(NewStorage.shared.storageGroups[0].subGroups.count)
-
+        let selectPresetVC = storyboard?.instantiateViewController(identifier: "SelectPresetVC") as! PresetSelectViewController
+        selectPresetVC.selectedSection = self.selectedSection
+        self.present(selectPresetVC, animated: true)
     }
     
     @IBAction func createPreset(_ sender: Any) {
@@ -143,7 +144,7 @@ class ViewController4: UIViewController {
                 selectedCell.titleSubGroup.isUserInteractionEnabled = true
                 selectedCell.editBtnOutlet.isHidden = false
                 
-                var currentSubGroup = NewStorage.shared.storageGroups[selectedSection].subGroups[selectedIndexPath.row]
+                let currentSubGroup = NewStorage.shared.storageGroups[selectedSection].subGroups[selectedIndexPath.row]
                 selectedCell.subGroup = currentSubGroup
                 selectedCell.currentIndexPath = selectedIndexPath
                 selectedCell.currentSection = selectedSection
@@ -298,18 +299,27 @@ extension ViewController4 : UICollectionViewDelegate, UICollectionViewDataSource
 extension ViewController4 {
     func load() {
         let defaults = UserDefaults.standard
-        if let savedData = defaults.object(forKey: "key") as? Data{
+        if let savedJSONGroups = defaults.object(forKey: "key") as? Data{
             do{
-//                let jsonString = String(data: savedData, encoding: .utf8)
-//                print(jsonString!)
-                let decodedData = try JSONDecoder().decode([JSONGroups].self, from: savedData)
+                //                let jsonString = String(data: savedData, encoding: .utf8)
+                //                print(jsonString!)
+                let decodedData = try JSONDecoder().decode([JSONGroups].self, from: savedJSONGroups)
                 NewStorage.shared.storageGroups = decodedData
+                
+            } catch{
+                print ("Can't load saved JSONGroups")
+            }
+            
+        }
+        if let savedPresets = defaults.object(forKey: "presets") as? Data{
+            do{
+                let decodedData = try JSONDecoder().decode([Preset].self, from: savedPresets)
+                PresetsStorage.shared.presets = decodedData
             
             } catch{
-                print ("Can't load")
+                print("Error : \(String(describing: error))")
             }
         }
-
     }
 }
 

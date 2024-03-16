@@ -10,38 +10,27 @@ import UIKit
 class ItemViewController: UIViewController {
     
     @IBOutlet weak var imageSubGroup: UIImageView!
-    
     @IBOutlet weak var titleSubGroup: UILabel!
     
-    @IBOutlet weak var sizeSegmentedControl: UISegmentedControl!
-    let arr1 = ["small", "medium", "large"]
-    let arr2 = ["traditional", "slim"]
+    @IBOutlet weak var titleMainSubGroup: UILabel!
+    @IBOutlet weak var mainSG: UISegmentedControl!
+    
     var subGroup = JSONSubGroup(title: "", image: "", subGroups: [JSONSubGroup](), items: [JSONItem]())
-    var f = true
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         imageSubGroup.image = UIImage(named: subGroup.image)
         titleSubGroup.text = subGroup.title
-        // Do any additional setup after loading the view.
-    }
-    
-    
-    @IBAction func changeSG(_ sender: Any) {
-        
-        if f {
-            sizeSegmentedControl.removeAllSegments()
-            for (index, title) in arr1.enumerated(){
-                sizeSegmentedControl.insertSegment(withTitle: title, at: index, animated: true)
-            }
-            f = false
-        } else{
-            sizeSegmentedControl.removeAllSegments()
-            for (index, title) in arr2.enumerated(){
-                sizeSegmentedControl.insertSegment(withTitle: title, at: index, animated: true)
-            }
-            f = true
+        titleMainSubGroup.text = subGroup.subGroups.first?.title ?? ""
+        mainSG.removeAllSegments()
+        for (index, _) in subGroup.subGroups[0].items.enumerated(){
+            mainSG.insertSegment(withTitle: subGroup.subGroups[0].items[index].title, at: index, animated: false)
         }
         
-        
     }
+    
+    
+ 
 }
