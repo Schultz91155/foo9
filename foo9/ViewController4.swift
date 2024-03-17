@@ -290,7 +290,9 @@ extension ViewController4 : UICollectionViewDelegate, UICollectionViewDataSource
         } else{
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let itemVC = storyboard.instantiateViewController(identifier: "itemVC") as! ItemViewController
-            itemVC.subGroup = NewStorage.shared.storageGroups[selectedSection].subGroups[indexPath.row]
+            //itemVC.subGroup = NewStorage.shared.storageGroups[selectedSection].subGroups[indexPath.row]
+            itemVC.selectedSection = selectedSection
+            itemVC.indexPath = indexPath.row
             self.present(itemVC, animated: true)
         }
     }

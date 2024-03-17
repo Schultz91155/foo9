@@ -65,17 +65,37 @@ extension PresetSelectViewController : UITableViewDelegate, UITableViewDataSourc
                     }
                 }
             
-            
-            
-            
         case .double:
-            print( "foo")
+
+            var secondaryItemArray = [JSONItem]()
+            
+            for item in PresetsStorage.shared.presets[indexPath.row].secondarySubGroupItems!{
+                let currentJSONItem = JSONItem(title: item, price: 0)
+                secondaryItemArray.append(currentJSONItem) // traditional , slim
+            }
+            let secondarySubGroup = JSONSubGroup(title: PresetsStorage.shared.presets[indexPath.row].secondarySubGroupTitle!, image: "pizza", subGroups: [JSONSubGroup](), items: secondaryItemArray)
+            
+            var mainSubGroupsArray = [JSONSubGroup]()
+            for (index, _) in PresetsStorage.shared.presets[indexPath.row].mainSubGroupItems.enumerated(){
+                let currentSubGroup = JSONSubGroup(title: PresetsStorage.shared.presets[indexPath.row].mainSubGroupItems[index], image: "pizza", subGroups: [secondarySubGroup], items: [JSONItem]())
+                mainSubGroupsArray.append(currentSubGroup)
+            }
+            
+            let mainSubGroup = JSONSubGroup(title: PresetsStorage.shared.presets[indexPath.row].mainSubGroupTitle, image: "pizza", subGroups: mainSubGroupsArray, items: [JSONItem]())
+            
+            let newSubGroup = JSONSubGroup(title: "empty", image: "pizza",  subGroups: [mainSubGroup], items: [JSONItem]())
+            
+            
+            
+            
+            NewStorage.shared.storageGroups[selectedSection].subGroups.append(newSubGroup)
+            if let presentingViewController = self.presentingViewController as? ViewController4 {
+                    self.dismiss(animated: true) {
+                        presentingViewController.subGroupsCollectionView.reloadData()
+                    }
+                }
+                
         }
-        
-        //        let newSubGroup = JSONSubGroup(title: "empty", image: "pizza",  subGroups: [JSONSubGroup](), items: [JSONItem]())
-        //        NewStorage.shared.storageGroups[selectedSection].subGroups.append(newSubGroup)
-        //        self.subGroupsCollectionView.reloadData()
-        
         
     }
 }

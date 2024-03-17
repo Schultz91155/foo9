@@ -18,6 +18,7 @@ class PresetEditorViewController: UIViewController {
     @IBOutlet weak var secondarySubGroupTitleLabel: UILabel!
     @IBOutlet weak var secondarySubGroupItems: UISegmentedControl!
     @IBOutlet weak var editSecondarySubgroupTitle: UIButton!
+    @IBOutlet weak var addSecondarySubgrupItem: UIButton!
     
 
     
@@ -47,17 +48,86 @@ class PresetEditorViewController: UIViewController {
         secondarySubGroupItems.addTarget(self, action: #selector(editItem(_: )), for: .valueChanged)
     }
     
-
+    @IBAction func addMainSubgroupItem(_ sender: Any) {
+        let alert = UIAlertController(title: "Add new item?", message: nil, preferredStyle: .alert)
+        alert.addTextField { (textFild) in
+            textFild.placeholder = "Enter new item title"
+        }
+        let cancel = UIAlertAction(title: "Cancel", style: .cancel)
+        alert.addAction(cancel)
+        
+        
+        
+        let add = UIAlertAction(title: "Add new", style: .default, handler:{ [self, weak alert] (_) in
+            let textField = alert?.textFields![0].text ?? "New preset"
+            let isContain = PresetsStorage.shared.presets[indexPath].mainSubGroupItems.contains{ items in
+                items == textField
+            }
+            if (!isContain){
+                PresetsStorage.shared.presets[indexPath].mainSubGroupItems.append(textField)
+                setupSG()
+                if let presetViewController = self.presentingViewController as? PresetViewController {
+                    presetViewController.presetsCollectionView.reloadData()
+                }
+            }
+            else {
+                let alert2 = UIAlertController(title: "Failed", message: "This item already exists ", preferredStyle: .alert)
+                let ok = UIAlertAction(title: "Ok", style: .cancel)
+                alert2.addAction(ok)
+                self.present(alert2, animated: true)
+            }
+            
+        })
+        alert.addAction(add)
+        self.present(alert, animated: true)
+        
+        
+        
+    }
+    
+    @IBAction func addSecondarySubgroupItem(_ sender: Any) {
+        let alert = UIAlertController(title: "Add new item?", message: nil, preferredStyle: .alert)
+        alert.addTextField { (textFild) in
+            textFild.placeholder = "Enter new item title"
+        }
+        let cancel = UIAlertAction(title: "Cancel", style: .cancel)
+        alert.addAction(cancel)
+        
+        
+        
+        let add = UIAlertAction(title: "Add?", style: .default, handler:{ [self, weak alert] (_) in
+            let textField = alert?.textFields![0].text ?? "New preset"
+            let isContain = PresetsStorage.shared.presets[indexPath].secondarySubGroupItems!.contains{ items in
+                items == textField
+            }
+            if (!isContain){
+                PresetsStorage.shared.presets[indexPath].secondarySubGroupItems?.append(textField)
+                secondarySubGroupItems.removeAllSegments()
+                for (index, item) in PresetsStorage.shared.presets[indexPath].secondarySubGroupItems!.enumerated(){
+                    secondarySubGroupItems.insertSegment(withTitle: item, at: index, animated: false)
+                }
+            }
+            else {
+                let alert2 = UIAlertController(title: "Failed", message: "This item already exists ", preferredStyle: .alert)
+                let ok = UIAlertAction(title: "Ok", style: .cancel)
+                alert2.addAction(ok)
+                self.present(alert2, animated: true)
+            }
+            
+        })
+        alert.addAction(add)
+        self.present(alert, animated: true)
+    }
     
     @IBAction func editPresetTitle(_ sender: Any) {
         let alert = UIAlertController(title: "Change preset title?", message: nil, preferredStyle: .alert)
         alert.addTextField { (textFild) in
-            textFild.placeholder = "Enter new preset title"
+            textFild.text = PresetsStorage.shared.presets[self.indexPath].title
         }
         let cancel = UIAlertAction(title: "Cancel", style: .cancel)
         alert.addAction(cancel)
         let edit = UIAlertAction(title: "Edit", style: .default, handler:{ [self, weak alert] (_) in
-            let textField = alert?.textFields![0].text ?? "New preset"
+            let textField = alert?.textFields![0].text ?? "New preset title"
             
             let isContain = PresetsStorage.shared.presets.contains { presets in
                 presets.self.title == textField
@@ -76,14 +146,17 @@ class PresetEditorViewController: UIViewController {
             }
             
         })
+
         alert.addAction(edit)
         self.present(alert, animated: true)
     }
+                                 
+                                 
     
     @IBAction func editMainSubGroupTitle(_ sender: Any) {
         let alert = UIAlertController(title: "Change preset main subGroup title?", message: nil, preferredStyle: .alert)
         alert.addTextField { (textField) in
-            textField.placeholder = "Enter new main subGroup title"
+            textField.text = PresetsStorage.shared.presets[self.indexPath].mainSubGroupTitle
             
         }
         let cancel = UIAlertAction(title: "Cancel", style: .cancel)
@@ -100,7 +173,7 @@ class PresetEditorViewController: UIViewController {
     @IBAction func editSecondarySubGroupTitle(_ sender: Any) {
         let alert = UIAlertController(title: "Change preset secondary subGroup title?", message: nil, preferredStyle: .alert)
         alert.addTextField { (textField) in
-            textField.placeholder = "Enter new secondary subGroup title"
+            textField.text = PresetsStorage.shared.presets[self.indexPath].secondarySubGroupTitle
             
         }
         let cancel = UIAlertAction(title: "Cancel", style: .cancel)
@@ -136,6 +209,7 @@ extension PresetEditorViewController{
             for (index, item) in preset.mainSubGroupItems.enumerated(){
                 mainSubGroupItems.insertSegment(withTitle: item, at: index, animated: false)
             }
+            addSecondarySubgrupItem.isHidden = true
         case .double:
             editSecondarySubgroupTitle.isHidden = false
             secondarySubGroupTitleLabel.isHidden = false
@@ -143,7 +217,7 @@ extension PresetEditorViewController{
             secondarySubGroupTitleLabel.text = preset.secondarySubGroupTitle
             secondarySubGroupItems.removeAllSegments()
             
-            if let secondarySubGroupItems = preset.secondarySubGroupItems{
+            if preset.secondarySubGroupItems != nil{
                 for (index, item) in preset.secondarySubGroupItems!.enumerated(){
                     self.secondarySubGroupItems.insertSegment(withTitle: item, at: index, animated: false)
                 }
@@ -162,6 +236,8 @@ extension PresetEditorViewController{
         for (index, item) in preset.mainSubGroupItems.enumerated(){
             mainSubGroupItems.insertSegment(withTitle: item, at: index, animated: false)
         }
+        
+
 
     }
     

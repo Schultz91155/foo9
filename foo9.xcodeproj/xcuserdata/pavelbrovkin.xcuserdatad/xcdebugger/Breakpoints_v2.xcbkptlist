@@ -33,7 +33,7 @@
             startingLineNumber = "56"
             endingLineNumber = "56"
             landmarkName = "tableView(_:didSelectRowAt:)"
-            landmarkType = "9">
+            landmarkType = "7">
             <Locations>
                <Location
                   uuid = "22EC509A-7659-4811-8180-8454A27E0422 - 11324c410dcc7a15"
@@ -64,6 +64,36 @@
                   startingLineNumber = "57"
                   endingLineNumber = "57"
                   offsetFromSymbolStart = "1408">
+               </Location>
+               <Location
+                  uuid = "22EC509A-7659-4811-8180-8454A27E0422 - 11324c410dcc7a4a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "foo9.PresetSelectViewController.tableView(_: __C.UITableView, didSelectRowAt: Foundation.IndexPath) -&gt; ()"
+                  moduleName = "foo9"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/pavelbrovkin/Documents/xcode/foo9/foo9/PresetSelectViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "57"
+                  endingLineNumber = "57"
+                  offsetFromSymbolStart = "1548">
+               </Location>
+               <Location
+                  uuid = "22EC509A-7659-4811-8180-8454A27E0422 - 11324c410dcc7a4a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "foo9.PresetSelectViewController.tableView(_: __C.UITableView, didSelectRowAt: Foundation.IndexPath) -&gt; ()"
+                  moduleName = "foo9"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/pavelbrovkin/Documents/xcode/foo9/foo9/PresetSelectViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "57"
+                  endingLineNumber = "57"
+                  offsetFromSymbolStart = "1556">
                </Location>
             </Locations>
          </BreakpointContent>
