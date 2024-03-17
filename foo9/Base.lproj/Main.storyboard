@@ -65,10 +65,10 @@
             </objects>
             <point key="canvasLocation" x="-1436" y="-858"/>
         </scene>
-        <!--View Controller4-->
+        <!--Groups View Controller-->
         <scene sceneID="AV0-zN-jIV">
             <objects>
-                <viewController storyboardIdentifier="vc4" id="T6d-ET-EVx" customClass="ViewController4" customModule="foo9" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="vc4" id="T6d-ET-EVx" customClass="GroupsViewController" customModule="foo9" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="96J-br-qdd">
                         <rect key="frame" x="0.0" y="0.0" width="430" height="932"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

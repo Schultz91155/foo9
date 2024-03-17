@@ -64,7 +64,7 @@ class ItemViewController: UIViewController {
         titleSecondarySubGroup.isHidden = true
         secondarySG.isHidden = true
         titleMainSubGroup.text = subGroup.subGroups.first?.title ?? ""
-        itemCostLabel.text = subGroup.subGroups[indexPath].subGroups.first?.items[mainSG.selectedSegmentIndex].title
+        itemCostLabel.text = subGroup.subGroups.first?.items[mainSG.selectedSegmentIndex].title
         mainSG.removeAllSegments()
         for (index, _) in subGroup.subGroups[0].items.enumerated(){
             mainSG.insertSegment(withTitle: subGroup.subGroups[0].items[index].title, at: index, animated: false)

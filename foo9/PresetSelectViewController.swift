@@ -41,7 +41,7 @@ extension PresetSelectViewController : UITableViewDelegate, UITableViewDataSourc
         40
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print (indexPath.row)
+        
         presetsTableView.deselectRow(at: indexPath, animated: true)
         
         switch (PresetsStorage.shared.presets[indexPath.row].type){
@@ -59,7 +59,7 @@ extension PresetSelectViewController : UITableViewDelegate, UITableViewDataSourc
             let newSubGroup = JSONSubGroup(title: "empty", image: "pizza",  subGroups: [mainSubGroup], items: [JSONItem]())
             NewStorage.shared.storageGroups[selectedSection].subGroups.append(newSubGroup)
             
-            if let presentingViewController = self.presentingViewController as? ViewController4 {
+            if let presentingViewController = self.presentingViewController as? GroupsViewController {
                     self.dismiss(animated: true) {
                         presentingViewController.subGroupsCollectionView.reloadData()
                     }
@@ -89,7 +89,7 @@ extension PresetSelectViewController : UITableViewDelegate, UITableViewDataSourc
             
             
             NewStorage.shared.storageGroups[selectedSection].subGroups.append(newSubGroup)
-            if let presentingViewController = self.presentingViewController as? ViewController4 {
+            if let presentingViewController = self.presentingViewController as? GroupsViewController {
                     self.dismiss(animated: true) {
                         presentingViewController.subGroupsCollectionView.reloadData()
                     }

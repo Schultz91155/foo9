@@ -1,5 +1,5 @@
 //
-//  ViewController4.swift
+//  GroupsViewController.swift
 //  foo9
 //
 //  Created by Pavel Brovkin on 02.03.2024.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ViewController4: UIViewController {
+class GroupsViewController: UIViewController {
 
     @IBOutlet weak var groupsCollectionView: UICollectionView!
     @IBOutlet weak var subGroupsCollectionView: UICollectionView!
@@ -214,7 +214,7 @@ class ViewController4: UIViewController {
     }
 }
 
-extension ViewController4 : UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
+extension GroupsViewController : UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
         if (collectionView == groupsCollectionView){
@@ -290,7 +290,6 @@ extension ViewController4 : UICollectionViewDelegate, UICollectionViewDataSource
         } else{
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let itemVC = storyboard.instantiateViewController(identifier: "itemVC") as! ItemViewController
-            //itemVC.subGroup = NewStorage.shared.storageGroups[selectedSection].subGroups[indexPath.row]
             itemVC.selectedSection = selectedSection
             itemVC.indexPath = indexPath.row
             self.present(itemVC, animated: true)
@@ -298,7 +297,7 @@ extension ViewController4 : UICollectionViewDelegate, UICollectionViewDataSource
     }
 
 }
-extension ViewController4 {
+extension GroupsViewController {
     func load() {
         let defaults = UserDefaults.standard
         if let savedJSONGroups = defaults.object(forKey: "key") as? Data{
