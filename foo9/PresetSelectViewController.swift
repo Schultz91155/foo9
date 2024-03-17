@@ -45,17 +45,27 @@ extension PresetSelectViewController : UITableViewDelegate, UITableViewDataSourc
         presetsTableView.deselectRow(at: indexPath, animated: true)
         
         switch (PresetsStorage.shared.presets[indexPath.row].type){
+        
+        case .none:
+            var itemArray = [JSONItem]()
+            let item = JSONItem(title: PresetsStorage.shared.presets[indexPath.row].title, price: 0)
+            itemArray.append(item)
+            let newSubGroup = JSONSubGroup(title: "empty", image: "pizza", subGroups: [JSONSubGroup](), items: itemArray)
+            NewStorage.shared.storageGroups[selectedSection].subGroups.append(newSubGroup)
             
+            if let presentingViewController = self.presentingViewController as? GroupsViewController {
+                    self.dismiss(animated: true) {
+                        presentingViewController.subGroupsCollectionView.reloadData()
+                    }
+                }
         case .single:
             
             var itemArray = [JSONItem]()
-            for item in PresetsStorage.shared.presets[indexPath.row].mainSubGroupItems{
-                
-                let currentJSONItem = JSONItem(title: item, price: 0)
+            for item in PresetsStorage.shared.presets[indexPath.row].mainSubGroupItems!{
                 itemArray.append(JSONItem(title: item, price: 0))
 
             }
-            let mainSubGroup = JSONSubGroup(title: PresetsStorage.shared.presets[indexPath.row].mainSubGroupTitle, image: "pizza", subGroups: [JSONSubGroup](), items: itemArray)
+            let mainSubGroup = JSONSubGroup(title: PresetsStorage.shared.presets[indexPath.row].mainSubGroupTitle!, image: "pizza", subGroups: [JSONSubGroup](), items: itemArray)
             let newSubGroup = JSONSubGroup(title: "empty", image: "pizza",  subGroups: [mainSubGroup], items: [JSONItem]())
             NewStorage.shared.storageGroups[selectedSection].subGroups.append(newSubGroup)
             
@@ -76,12 +86,12 @@ extension PresetSelectViewController : UITableViewDelegate, UITableViewDataSourc
             let secondarySubGroup = JSONSubGroup(title: PresetsStorage.shared.presets[indexPath.row].secondarySubGroupTitle!, image: "pizza", subGroups: [JSONSubGroup](), items: secondaryItemArray)
             
             var mainSubGroupsArray = [JSONSubGroup]()
-            for (index, _) in PresetsStorage.shared.presets[indexPath.row].mainSubGroupItems.enumerated(){
-                let currentSubGroup = JSONSubGroup(title: PresetsStorage.shared.presets[indexPath.row].mainSubGroupItems[index], image: "pizza", subGroups: [secondarySubGroup], items: [JSONItem]())
+            for (index, _) in PresetsStorage.shared.presets[indexPath.row].mainSubGroupItems!.enumerated(){
+                let currentSubGroup = JSONSubGroup(title: PresetsStorage.shared.presets[indexPath.row].mainSubGroupItems![index], image: "pizza", subGroups: [secondarySubGroup], items: [JSONItem]())
                 mainSubGroupsArray.append(currentSubGroup)
             }
             
-            let mainSubGroup = JSONSubGroup(title: PresetsStorage.shared.presets[indexPath.row].mainSubGroupTitle, image: "pizza", subGroups: mainSubGroupsArray, items: [JSONItem]())
+            let mainSubGroup = JSONSubGroup(title: PresetsStorage.shared.presets[indexPath.row].mainSubGroupTitle!, image: "pizza", subGroups: mainSubGroupsArray, items: [JSONItem]())
             
             let newSubGroup = JSONSubGroup(title: "empty", image: "pizza",  subGroups: [mainSubGroup], items: [JSONItem]())
             

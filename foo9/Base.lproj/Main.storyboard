@@ -460,7 +460,9 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="addMainSubgrupItem" destination="9MP-MM-8c0" id="MRk-sv-txU"/>
                         <outlet property="addSecondarySubgrupItem" destination="GFg-ap-3Vc" id="DzE-fr-zV0"/>
+                        <outlet property="editMainSubgroupTitle" destination="PO6-HT-aZv" id="3wk-x0-U6F"/>
                         <outlet property="editSecondarySubgroupTitle" destination="VOR-Ld-NeK" id="T3Z-VL-X0Q"/>
                         <outlet property="mainSubGroupItems" destination="vM4-lu-Uq9" id="vHg-GG-i6s"/>
                         <outlet property="mainSubGroupTitleLabel" destination="sgQ-N4-Dxy" id="Cfc-rm-LsU"/>

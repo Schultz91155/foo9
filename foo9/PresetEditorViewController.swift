@@ -19,6 +19,8 @@ class PresetEditorViewController: UIViewController {
     @IBOutlet weak var secondarySubGroupItems: UISegmentedControl!
     @IBOutlet weak var editSecondarySubgroupTitle: UIButton!
     @IBOutlet weak var addSecondarySubgrupItem: UIButton!
+    @IBOutlet weak var editMainSubgroupTitle: UIButton!
+    @IBOutlet weak var addMainSubgrupItem: UIButton!
     
 
     
@@ -60,11 +62,11 @@ class PresetEditorViewController: UIViewController {
         
         let add = UIAlertAction(title: "Add new", style: .default, handler:{ [self, weak alert] (_) in
             let textField = alert?.textFields![0].text ?? "New preset"
-            let isContain = PresetsStorage.shared.presets[indexPath].mainSubGroupItems.contains{ items in
+            let isContain = PresetsStorage.shared.presets[indexPath].mainSubGroupItems!.contains{ items in
                 items == textField
             }
             if (!isContain){
-                PresetsStorage.shared.presets[indexPath].mainSubGroupItems.append(textField)
+                PresetsStorage.shared.presets[indexPath].mainSubGroupItems!.append(textField)
                 setupSG()
                 if let presetViewController = self.presentingViewController as? PresetViewController {
                     presetViewController.presetsCollectionView.reloadData()
@@ -200,13 +202,22 @@ extension PresetEditorViewController{
         mainSubGroupTitleLabel.text = preset.mainSubGroupTitle
         
         switch (preset.type){
+        case (.none):
+            secondarySubGroupTitleLabel.isHidden = true
+            secondarySubGroupItems.isHidden = true
+            mainSubGroupTitleLabel.isHidden = true
+            mainSubGroupItems.isHidden = true
+            editSecondarySubgroupTitle.isHidden = true
+            editMainSubgroupTitle.isHidden = true
+            addSecondarySubgrupItem.isHidden = true
+            addMainSubgrupItem.isHidden = true
             
         case .single:
             secondarySubGroupTitleLabel.isHidden = true
             secondarySubGroupItems.isHidden = true
             editSecondarySubgroupTitle.isHidden = true
             mainSubGroupItems.removeAllSegments()
-            for (index, item) in preset.mainSubGroupItems.enumerated(){
+            for (index, item) in preset.mainSubGroupItems!.enumerated(){
                 mainSubGroupItems.insertSegment(withTitle: item, at: index, animated: false)
             }
             addSecondarySubgrupItem.isHidden = true
@@ -233,7 +244,7 @@ extension PresetEditorViewController{
     func setupSG(){
         preset = PresetsStorage.shared.presets[indexPath]
         mainSubGroupItems.removeAllSegments()
-        for (index, item) in preset.mainSubGroupItems.enumerated(){
+        for (index, item) in preset.mainSubGroupItems!.enumerated(){
             mainSubGroupItems.insertSegment(withTitle: item, at: index, animated: false)
         }
         
@@ -307,7 +318,7 @@ extension PresetEditorViewController : EditSubGroupItemsAlertDelegate{
         
         switch (sender){
             case "mainSubGroupItems" :
-                contaner = PresetsStorage.shared.presets[indexPath].mainSubGroupItems
+                contaner = PresetsStorage.shared.presets[indexPath].mainSubGroupItems!
                 segmentedControl = self.mainSubGroupItems
             case "secondarySubGroupItems":
                 contaner = PresetsStorage.shared.presets[indexPath].secondarySubGroupItems!
@@ -326,7 +337,7 @@ extension PresetEditorViewController : EditSubGroupItemsAlertDelegate{
             
             switch (sender){
                 case "mainSubGroupItems" :
-                    PresetsStorage.shared.presets[indexPath].mainSubGroupItems[segmentedControl.selectedSegmentIndex] = (textField?.text)!
+                    PresetsStorage.shared.presets[indexPath].mainSubGroupItems![segmentedControl.selectedSegmentIndex] = (textField?.text)!
                 case "secondarySubGroupItems":
                 PresetsStorage.shared.presets[indexPath].secondarySubGroupItems?[segmentedControl.selectedSegmentIndex] = (textField?.text)!
                     
@@ -372,9 +383,9 @@ extension PresetEditorViewController : EditSubGroupItemsAlertDelegate{
             
             switch (sender){
                 case "mainSubGroupItems" :
-                PresetsStorage.shared.presets[indexPath].mainSubGroupItems.remove(at: selectedIndex)
+                PresetsStorage.shared.presets[indexPath].mainSubGroupItems!.remove(at: selectedIndex)
                 mainSubGroupItems.removeAllSegments()
-                for (index, item) in PresetsStorage.shared.presets[indexPath].mainSubGroupItems.enumerated(){
+                for (index, item) in PresetsStorage.shared.presets[indexPath].mainSubGroupItems!.enumerated(){
                     mainSubGroupItems.insertSegment(withTitle: item, at: index, animated: false)
                 }
                     

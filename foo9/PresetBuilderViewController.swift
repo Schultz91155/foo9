@@ -45,11 +45,20 @@ class PresetBuilderViewController: UIViewController {
         let secondarySubGroupTitle = self.secondarySubGroupTitle.text ?? "new secondary subgroup title"
         let secondarySubGroupItemsString = self.secondarySubGroupItems.text ?? ""
         let secondarySubGroupItems = secondarySubGroupItemsString.split(separator: "/").map(String.init)
-        if (secondarySubGroupItems.count == 0){
-            PresetsStorage.shared.presets.append(Preset(title: presetTitle, mainSubGroupTitle: presetMainSubgroupTitle, mainSubGroupItems: mainSubGroupItems, type: .single))
+        
+        //если первый SG пустой то создаю none
+        if(mainSubGroupItems.count == 0){
+            PresetsStorage.shared.presets.append(Preset(title: presetTitle, type: .none))
         } else{
-            PresetsStorage.shared.presets.append(Preset(title: presetTitle, mainSubGroupTitle: presetMainSubgroupTitle, mainSubGroupItems: mainSubGroupItems, secondarySubGroupTitle: secondarySubGroupTitle, secondarySubGroupItems: secondarySubGroupItems, type: .double))
+            //если второй SG пустой то создаю single
+            if (secondarySubGroupItems.count == 0){
+                PresetsStorage.shared.presets.append(Preset(title: presetTitle, mainSubGroupTitle: presetMainSubgroupTitle, mainSubGroupItems: mainSubGroupItems, type: .single))
+            } else{
+                //если второй SG не пустой то создаю single
+                PresetsStorage.shared.presets.append(Preset(title: presetTitle, mainSubGroupTitle: presetMainSubgroupTitle, mainSubGroupItems: mainSubGroupItems, secondarySubGroupTitle: secondarySubGroupTitle, secondarySubGroupItems: secondarySubGroupItems, type: .double))
+            }
         }
+ 
         
         if let presetViewController = self.presentingViewController as? PresetViewController {
                 self.dismiss(animated: true) {
@@ -77,7 +86,13 @@ class PresetBuilderViewController: UIViewController {
                 presetTitles.self.title == presetTitle
             }
             if (!isContain){
+                saveButtonOutlet.isEnabled = true
+                saveButtonOutlet.alpha = 1
+                //включаю кнопку для того чтобы сохранить пресет без первого SG
                 mainSubGroupTitle.isHidden = false
+
+                
+
             }else{
                 mainSubGroupTitle.isHidden = true
                 mainSubGroupItems.isHidden = true
@@ -90,8 +105,10 @@ class PresetBuilderViewController: UIViewController {
     
     @objc func showMainSubGroupItems (sender: UITextView){
         if (sender.text.isEmpty){
-            saveButtonOutlet.isEnabled = false
-            saveButtonOutlet.alpha = 0.5
+            //включаю кнопку для того чтобы сохранить пресет без первого SG
+            saveButtonOutlet.isEnabled = true
+            saveButtonOutlet.alpha = 1
+            
             mainSubGroupItems.isHidden = true
             mainSubGroupItems.text?.removeAll()
             secondarySubGroupTitle.isHidden = true
@@ -99,6 +116,9 @@ class PresetBuilderViewController: UIViewController {
             secondarySubGroupItems.isHidden = true
             secondarySubGroupItems.text?.removeAll()
         }else{
+            //выключаю кнопку т.к заполнено название главной подгруппы, а значит необходимо заполнить ее продуктами
+            saveButtonOutlet.isEnabled = false
+            saveButtonOutlet.alpha = 0.5
             mainSubGroupItems.isHidden = false
         }
     }

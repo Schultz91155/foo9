@@ -32,32 +32,50 @@ class ItemViewController: UIViewController {
         imageSubGroup.image = UIImage(named: subGroup.image)
         titleSubGroup.text = subGroup.title
         
-
-        
-        if (subGroup.subGroups[0].subGroups.count > 0) {
-            setupDouble()
-            
-        } else{
-            setupSingle()
-            
+        if (subGroup.subGroups.count == 0){
+            setupNone()
         }
+        else{
+            if (subGroup.subGroups[0].subGroups.count > 0) {
+                setupDouble()
+            } else{
+                setupSingle()
+            }
+        }
+        
+     
         mainSG.addTarget(self, action: #selector(setCurrentItem), for: .valueChanged)
         secondarySG.addTarget(self, action: #selector(setCurrentItem), for: .valueChanged)
         refreshCost()
         
     }
     func refreshCost(){
-        if (subGroup.subGroups[0].subGroups.count > 0) {
-            self.currentItem = NewStorage.shared.storageGroups[selectedSection].subGroups[indexPath].subGroups.first?.subGroups[mainSG.selectedSegmentIndex].subGroups.first?.items[secondarySG.selectedSegmentIndex] ?? JSONItem(title: "", price: 0)
-//            self.currentItem = subGroup.subGroups.first?.subGroups[mainSG.selectedSegmentIndex].subGroups.first?.items[secondarySG.selectedSegmentIndex] ?? JSONItem(title: "", price: 0)
-            
-            
-        } else{
-            self.currentItem = NewStorage.shared.storageGroups[selectedSection].subGroups[indexPath].subGroups.first?.items[mainSG.selectedSegmentIndex] ?? JSONItem(title: "", price: 0)
-//            self.currentItem = subGroup.subGroups.first?.items[mainSG.selectedSegmentIndex] ?? JSONItem(title: "", price: 0)
-            
+        
+        if (subGroup.subGroups.count == 0){
+            self.currentItem = NewStorage.shared.storageGroups[selectedSection].subGroups[indexPath].items[0]
+        }else{
+            if (subGroup.subGroups[0].subGroups.count > 0) {
+                self.currentItem = NewStorage.shared.storageGroups[selectedSection].subGroups[indexPath].subGroups.first?.subGroups[mainSG.selectedSegmentIndex].subGroups.first?.items[secondarySG.selectedSegmentIndex] ?? JSONItem(title: "", price: 0)
+    //            self.currentItem = subGroup.subGroups.first?.subGroups[mainSG.selectedSegmentIndex].subGroups.first?.items[secondarySG.selectedSegmentIndex] ?? JSONItem(title: "", price: 0)
+                
+                
+            } else{
+                self.currentItem = NewStorage.shared.storageGroups[selectedSection].subGroups[indexPath].subGroups.first?.items[mainSG.selectedSegmentIndex] ?? JSONItem(title: "", price: 0)
+    //            self.currentItem = subGroup.subGroups.first?.items[mainSG.selectedSegmentIndex] ?? JSONItem(title: "", price: 0)
+                
+            }
         }
+        
+        
+
         itemCostLabel.text = "Selected item cost : \(currentItem.price)"
+    }
+    
+    func setupNone(){
+        titleMainSubGroup.isHidden = true
+        titleSecondarySubGroup.isHidden = true
+        mainSG.isHidden = true
+        secondarySG.isHidden = true
     }
     
     func setupSingle(){
@@ -113,15 +131,22 @@ class ItemViewController: UIViewController {
             if let cost = Int(textField){
                 currentItem.price = cost
                 refreshCost()
-                if (subGroup.subGroups[0].subGroups.count > 0) {
-                    //double
-                    NewStorage.shared.storageGroups[selectedSection].subGroups[indexPath].subGroups[0].subGroups[mainSG.selectedSegmentIndex].subGroups[0].items[secondarySG.selectedSegmentIndex].price = cost
+                if (subGroup.subGroups.count == 0){
+                    NewStorage.shared.storageGroups[selectedSection].subGroups[indexPath].items[0].price = cost
                     refreshCost()
                 } else{
-                    //single
-                    NewStorage.shared.storageGroups[selectedSection].subGroups[indexPath].subGroups[0].items[mainSG.selectedSegmentIndex].price = cost
-                    refreshCost()
+                    if (subGroup.subGroups[0].subGroups.count > 0) {
+                        //double
+                        NewStorage.shared.storageGroups[selectedSection].subGroups[indexPath].subGroups[0].subGroups[mainSG.selectedSegmentIndex].subGroups[0].items[secondarySG.selectedSegmentIndex].price = cost
+                        refreshCost()
+                    } else{
+                        //single
+                        NewStorage.shared.storageGroups[selectedSection].subGroups[indexPath].subGroups[0].items[mainSG.selectedSegmentIndex].price = cost
+                        refreshCost()
+                    }
                 }
+                
+
             } else {
                 let errorAlert = UIAlertController(title: "Invalid cost", message: "Input valid cost", preferredStyle: .alert)
                 errorAlert.addAction(UIAlertAction(title: "OK", style: .cancel))

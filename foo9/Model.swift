@@ -24,7 +24,7 @@ struct JSONGroups : Codable {
 struct JSONSubGroup: Codable{
     var title: String
     var image: String
-    var price = 300
+    var price = 0
     var subGroups : [JSONSubGroup]
     var items: [JSONItem]
 }
@@ -35,14 +35,15 @@ struct JSONItem : Codable{
 }
 
 enum PresetType : String, Codable{
+    case none
     case single
     case double
 }
 
 struct Preset : Codable{
     var title : String
-    var mainSubGroupTitle : String
-    var mainSubGroupItems : [String]
+    var mainSubGroupTitle : String?
+    var mainSubGroupItems : [String]?
     var secondarySubGroupTitle : String?
     var secondarySubGroupItems : [String]?
     var type : PresetType
@@ -73,7 +74,7 @@ class NewStorage {
         }
     }
     
-    let images = ["cheesePizza","meatPizza","Bigburger"]
+    let images = ["cheesePizza","meatPizza","Bigburger","icecream"]
     private init(){
         
     }
